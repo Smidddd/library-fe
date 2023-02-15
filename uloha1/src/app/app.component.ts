@@ -1,64 +1,85 @@
 import {Component} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
+
+export enum Menu {
+  BOOKS = 'BOOKS',
+  USERS = 'USERS',
+  BORROWINGS = 'BORROWINGS',
+
+  GENRE = 'GENRES'
+}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
+
 })
+
+
 export class AppComponent {
-  cislo = "0";
-  changeChecks(cislo: String): void {
-    let num = Number(cislo);
-    let bin = "";
+    menu = Menu;
+  actualMenu: Menu = Menu.USERS;
+  form: FormGroup;
 
-    while (num != 0) {
-      if (num % 2 == 1) {
-        bin = "1" + bin;
-      } else {
-        bin = "0" + bin;
-      }
-      num = Math.floor(num / 2);
-    }
-    for (let a = 0 + bin.length; a < 8; a++) {
-      bin = "0" + bin;
-    }
-    let b = [];
-    for (let a = 0; a < bin.length; a++) {
-      b[a] = bin[a];
-    }
-    for (let i = 0; i <= 7; i++) {
-      let checkbox = document.getElementById(
-        i.toString()
-      ) as HTMLInputElement | null;
+  formBooks: FormGroup;
+  formGenres: FormGroup;
+  formBorrows: FormGroup;
+  persons: Array<any> = [];
+  books: Array<any> = [];
+  genres: Array<any> = [];
+  borrows: Array<any> = [];
 
-      if (checkbox != null) {
-        if (b[i] == '1') {
-          checkbox.checked = true;
-        } else {
-          checkbox.checked = false;
-        }
-      }
-    }
+
+  constructor() {
+    this.form = new FormGroup({
+      name: new FormControl(),
+      surname: new FormControl()
+    })
+    this.formBooks = new FormGroup({
+      autor: new FormControl(),
+      nazovKnihy: new FormControl()
+    })
+    this.formGenres = new FormGroup({
+      zaner: new FormControl()
+    })
+    this.formBorrows = new FormGroup({
+      name: new FormControl(),
+      surname: new FormControl(),
+      nazovKnihy: new FormControl()
+    })
+  }
+  changeMenu(menuItem: Menu): void {
+    this.actualMenu = menuItem;
   }
 
-  changeInputNumber(): void {
-    let dec = "";
-    for (let i = 0; i <= 7; i++) {
-      let checkbox = document.getElementById(
-        i.toString()
-      ) as HTMLInputElement | null;
-
-      if (checkbox != null) {
-        if (checkbox.checked == true) {
-          dec = dec.concat("1")
-        } else {
-          dec = dec.concat("0")
-        }
-      }
-    }
-    let x = parseInt(dec, 2);
-    this.cislo = x.toString();
+  savePerson(): void {
+    this.persons.push(
+      this.form.value);
+    this.form.reset();
   }
+  saveBooks(): void {
+    this.books.push(
+      this.formBooks.value);
+    this.formBooks.reset();
+  }
+  saveBorrows(): void {
+    this.borrows.push(
+      this.formBorrows.value);
+    this.formBorrows.reset();
+  }
+  saveGenres(): void {
+    this.genres.push(
+      this.formGenres.value);
+    this.formGenres.reset();
+  }
+
 }
+
+
+
+
+
+
 
 
