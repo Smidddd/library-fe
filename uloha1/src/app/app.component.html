@@ -1,13 +1,96 @@
-<div>
-  <label>Zadajte cislo v desiatkovej sustave:
-    <input #desiatkoveCislo type="text" (input)="convertCislo(desiatkoveCislo.value)" [value]="cislo"><br>
-    <input type="checkbox" (click)="setCisloByCheckboxes()">
-    <input type="checkbox" (click)="setCisloByCheckboxes()">
-    <input type="checkbox" (click)="setCisloByCheckboxes()">
-    <input type="checkbox" (click)="setCisloByCheckboxes()">
-    <input type="checkbox" (click)="setCisloByCheckboxes()">
-    <input type="checkbox" (click)="setCisloByCheckboxes()">
-    <input type="checkbox" (click)="setCisloByCheckboxes()">
-    <input type="checkbox" (click)="setCisloByCheckboxes()">
-  </label>
+
+<div class="menu">
+  <button (click)="changeMenu(menu.USERS)">POUŽÍVATELIA</button>
+  <button (click)="changeMenu(menu.BOOKS)">KNIHY</button>
+  <button (click)="changeMenu(menu.BORROWINGS)">VÝPOŽIČKY</button>
+  <button (click)="changeMenu(menu.GENRES)">ZANRE</button>
 </div>
+
+<ng-container *ngIf="actualMenu === menu.USERS">
+  <h3>POUŽÍVATELIA</h3>
+  <form [formGroup]="formPersons" (submit)="savePerson()">
+    <label>Meno:
+      <input type="text" formControlName="name">
+    </label>
+    <label>Priezvisko:
+      <input type="text" formControlName="surname">
+    </label>
+    <button type="submit">Ulozit</button>
+  </form>
+</ng-container>
+
+<ng-container *ngIf="actualMenu === menu.BOOKS">
+  <h3>KNIHY</h3>
+  <form [formGroup]="formBooks" (submit)="saveBook()">
+    <label>Nazov:
+      <input type="text" formControlName="name">
+    </label>
+    <label>Autor:
+      <input type="text" formControlName="author">
+    </label>
+    <button type="submit">Ulozit</button>
+  </form>
+</ng-container>
+
+<ng-container *ngIf="actualMenu === menu.BORROWINGS">
+  <h3>VYPOZICKY</h3>
+  <form [formGroup]="formBorrowings" (submit)="saveBorrowing()">
+    <label>Nazov knihy:
+      <input type="text" formControlName="bookName">
+    </label>
+    <label>Meno vypoziciavatela:
+      <input type="text" formControlName="borrowerName">
+    </label>
+    <button type="submit">Ulozit</button>
+  </form>
+</ng-container>
+
+<ng-container *ngIf="actualMenu === menu.GENRES">
+  <h3>ZANRE</h3>
+  <form [formGroup]="formGenres" (submit)="saveGenre()">
+    <label>Zaner:
+      <input type="text" formControlName="genre">
+    </label>
+    <button type="submit">Ulozit</button>
+  </form>
+</ng-container>
+
+<table *ngIf="actualMenu === menu.USERS">
+  <tr>
+    <th>Meno</th>
+    <th>Priezvisko</th>
+  </tr>
+  <tr *ngFor="let person of persons">
+    <td>{{ person.name }}</td>
+    <td>{{ person.surname }}</td>
+  </tr>
+</table>
+<table *ngIf="actualMenu === menu.BOOKS">
+  <tr>
+    <th>Nazov</th>
+    <th>Autor</th>
+  </tr>
+  <tr *ngFor="let book of books">
+    <td>{{ book.name }}</td>
+    <td>{{ book.author }}</td>
+  </tr>
+</table>
+<table *ngIf="actualMenu === menu.GENRES">
+  <tr>
+    <th>Zaner</th>
+  </tr>
+  <tr *ngFor="let genre of genres">
+    <td>{{ genre.genre }}</td>
+  </tr>
+</table>
+<table *ngIf="actualMenu === menu.BORROWINGS">
+  <tr>
+    <th>Nazov knihy</th>
+    <th>Meno vypoziciavatela</th>
+  </tr>
+  <tr *ngFor="let borrowing of borrowings">
+    <td>{{ borrowing.bookName }}</td>
+    <td>{{ borrowing.borrowerName }}</td>
+  </tr>
+</table>
+
