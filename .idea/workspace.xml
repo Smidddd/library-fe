@@ -5,8 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="88dea971-b747-46c3-ad38-4bb9f2f9abc0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/.vscode/launch.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/.vscode/tasks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/angular.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/src/app/app.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/src/app/app.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/src/app/app.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/src/app/app.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/src/app/app.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/src/assets/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/src/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/src/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/src/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/src/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/tsconfig.app.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uloha1/tsconfig.spec.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,7 +34,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/uloha1" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -35,7 +55,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/home/erik/Programs/WebStorm-223.8617.44/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "ts.external.directory.path": "/home/erik/Projects/library-fe/uloha1/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -50,8 +70,6 @@
       <workItem from="1675801994943" duration="759000" />
       <workItem from="1675802754460" duration="222000" />
       <workItem from="1676024842314" duration="4042000" />
-      <workItem from="1676466556096" duration="9000" />
-      <workItem from="1676466566040" duration="92000" />
     </task>
     <servers />
   </component>
