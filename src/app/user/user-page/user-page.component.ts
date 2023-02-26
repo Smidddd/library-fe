@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../common/model/user.model";
 
 export enum Menu{
+
   BOOKS = 'BOOKS',
   USERS = 'USERS',
   BORROWINGS = 'BORROWINGS',
@@ -16,6 +17,7 @@ export enum Menu{
 })
 export class UserPageComponent {
   formGroup: FormGroup;
+
   formBooks: FormGroup;
   formBorrows: FormGroup;
   formGenres: FormGroup;
@@ -32,6 +34,9 @@ export class UserPageComponent {
   genres: Array<{
     genre: string;
   }> = [];
+
+  persons: Array<User> = [];
+
   menu = Menu
   actualMenu: Menu = Menu.USERS;
   constructor() {
@@ -56,6 +61,7 @@ export class UserPageComponent {
 
   changeMenu(menuItem: Menu): void{
     this.actualMenu = menuItem;
+
   }
 
   savePerson(): void {
@@ -81,6 +87,9 @@ export class UserPageComponent {
     this.genres.push(this.formGenres.value);
     this.formGenres.reset()
   }
+
+
+
   deletePerson(index: number): void {
     this.persons.splice(index, 1);
   }

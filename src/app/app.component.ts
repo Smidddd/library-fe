@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from './common/model/user.model'
 import {Borrowing} from './common/model/borrowing.model';
+import {Book} from './common/model/book.model';
 export enum Menu{
   BOOKS = 'BOOKS',
   USERS = 'USERS',
@@ -23,11 +24,8 @@ export class AppComponent {
   formGenres: FormGroup;
 
   persons: Array<User> = [];
-  books: Array<{
-    name: string;
-    author: string;
-  }> = [];
   borrows: Array<Borrowing> = [];
+  books: Array<Book> = []
   genres: Array<{
     genre: string;
   }> = [];
@@ -40,13 +38,15 @@ export class AppComponent {
       surname: new FormControl(null, [Validators.required, Validators.minLength(3)])
     })
     this.formBooks = new FormGroup({
-      name: new FormControl(),
-      author: new FormControl()
+      id: new FormControl(),
+      name: new FormControl(null, Validators.required),
+      author: new FormControl(null, Validators.required)
     })
     this.formBorrows = new FormGroup({
       id: new FormControl(),
       name: new FormControl(null, Validators.required),
       bookname: new FormControl(null, [Validators.required])
+      
     })
     this.formGenres = new FormGroup({
       genre: new FormControl(),
@@ -69,10 +69,6 @@ export class AppComponent {
     }
     this.formGroup.reset();
   }
-  saveBook(): void{
-    this.books.push(this.formBooks.value);
-    this.formBooks.reset()
-  }
   saveBorrowing(): void{
     if (this.formBorrows.controls.id.value) {
       const index = this.borrows.findIndex(borrow => borrow.id === this.formBorrows.controls.id.value);
@@ -94,6 +90,7 @@ export class AppComponent {
   editPerson(index: number): void {
     this.formGroup.setValue(this.persons[index]);
   }
+
   deleteBorrow(index: number): void {
     this.borrows.splice(index, 1);
   }
@@ -101,6 +98,24 @@ export class AppComponent {
     this.formBorrows.setValue(this.borrows[index]);
   }
 
+
+  deleteBook(index: number): void {
+    this.books.splice(index, 1);
+  }
+  saveBook(): void {
+    if (this.formBooks.controls.id.value) {
+      const index = this.books.findIndex(book => book.id === this.formBooks.controls.id.value);
+      if (index !== -1) { this.books[index] = this.formBooks.value; }
+    } else {
+      this.books.push({ id: Date.now(),
+        name: this.formBooks.controls.name.value,
+        author: this.formBooks.controls.author.value });
+    }
+    this.formBooks.reset();
+  }
+  editBook(index: number): void {
+    this.formBooks.setValue(this.books[index]);
+  }
 }
 
 
