@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "kulka-uloha2": {
+    "Chrusc-uloha3": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/kulka-uloha2",
+            "outputPath": "dist/chrusc-uloha3",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "kulka-uloha2:build:production"
+              "browserTarget": "Chrusc-uloha3:build:production"
             },
             "development": {
-              "browserTarget": "kulka-uloha2:build:development"
+              "browserTarget": "Chrusc-uloha3:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "kulka-uloha2:build"
+            "browserTarget": "Chrusc-uloha3:build"
           }
         },
         "test": {
@@ -94,8 +94,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "c3b7daf6-5cfc-406e-b97d-962e44c6d080"
   }
 }

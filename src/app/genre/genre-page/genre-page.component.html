@@ -1,0 +1,25 @@
+
+
+<ng-container *ngIf="actualMenu === menu.GENRE">
+  <h1>Zaner</h1>
+  <form [formGroup]="formGenres" (submit)="saveGenres()">
+    <label>Zaner:
+      <input type="text" formControlName="genre" />
+    </label>
+    <p class="invalid-text" *ngIf="formGenres.controls.genre.invalid">Zadajte zaner</p>
+    <button type="submit" [disabled]="formGenres.invalid">
+      Uložiť
+    </button>
+    <button type="reset">Zrušiť</button>
+  </form>
+  <table *ngIf="genres.length">
+    <tr *ngFor="let genre of genres; let i = index">
+      <td>{{ genre.genre }}</td>
+      <td>
+        <button (click)="editGenres(i)">Upraviť</button>
+        <button (click)="deleteGenres(i)">Zmazať</button>
+      </td>
+    </tr>
+  </table>
+</ng-container>
+

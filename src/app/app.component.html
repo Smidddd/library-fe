@@ -1,10 +1,10 @@
 
 
 <div class="menu" style="margin-bottom: 10px">
-  <button (click)="changeMenu(menu.USERS)">Pouzivatelia</button>
-  <button (click)="changeMenu(menu.BOOKS)">Knihy</button>
+  <button (click)="changeMenu(menu.USERS)" routerLink="/user">Pouzivatelia</button>
+  <button (click)="changeMenu(menu.BOOKS)" >Knihy</button>
   <button (click)="changeMenu(menu.BORROWINGS)">Vypozicky</button>
-  <button (click)="changeMenu(menu.GENRE)">Zaner</button>
+  <button (click)="changeMenu(menu.GENRE)" routerLink="/genre">Zaner</button>
 </div>
 
 <ng-container *ngIf="actualMenu === menu.USERS">
@@ -67,22 +67,5 @@
 </ng-container>
 
 <ng-container *ngIf="actualMenu === menu.GENRE">
-  <h1>Zaner</h1>
-  <form [formGroup]="formGenres" (submit)="saveGenres()">
-    <label>Zaner:
-      <input type="text" formControlName="genre"/>
-    </label>
-
-    <button type="submit">Ulozit
-    </button>
-  </form>
-
-  <table *ngIf="genres.length">
-    <tr>
-      <th>Zaner</th>
-    </tr>
-    <tr *ngFor="let genre of genres">
-      <td>{{genre.genre}}</td>
-    </tr>
-  </table>
+  <router-outlet></router-outlet>
 </ng-container>

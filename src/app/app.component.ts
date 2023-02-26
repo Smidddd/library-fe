@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from './common/model/user.model'
+import {Genre} from "./common/model/genres.model";
 export enum Menu{
   BOOKS = 'BOOKS',
   USERS = 'USERS',
@@ -30,9 +31,7 @@ export class AppComponent {
     name: string;
     bookname: string;
   }> = [];
-  genres: Array<{
-    genre: string;
-  }> = [];
+  genres: Array<Genre> = [];
   menu = Menu
   actualMenu: Menu = Menu.USERS;
   constructor() {
@@ -50,8 +49,8 @@ export class AppComponent {
       bookname: new FormControl()
     })
     this.formGenres = new FormGroup({
-      genre: new FormControl(),
-
+      id: new FormControl(),
+      genre: new FormControl(null, Validators.required),
     })
   }
 
@@ -78,17 +77,29 @@ export class AppComponent {
     this.borrows.push(this.formBorrows.value);
     this.formBorrows.reset()
   }
-  saveGenres(): void{
-    this.genres.push(this.formGenres.value);
-    this.formGenres.reset()
-  }
+
   deletePerson(index: number): void {
     this.persons.splice(index, 1);
   }
   editPerson(index: number): void {
     this.formGroup.setValue(this.persons[index]);
   }
-
+  deleteGenres(index: number): void {
+    this.genres.splice(index, 1);
+  }
+  saveGenres(): void {
+    if (this.formGenres.controls.id.value) {
+      const index = this.genres.findIndex(genre => genre.id === this.formGenres.controls.id.value);
+      if (index !== -1) { this.genres[index] = this.formGenres.value; }
+    } else {
+      this.genres.push({ id: Date.now(),
+        genre: this.formGenres.controls.genre.value});
+    }
+    this.formGenres.reset();
+  }
+  editGenres(index: number): void {
+    this.formGenres.setValue(this.genres[index]);
+  }
 }
 
 
