@@ -4,9 +4,10 @@ import {User} from "../../common/model/user.model";
 
 export enum Menu{
 
-
-  USERS = 'USERS'
-
+  BOOKS = 'BOOKS',
+  USERS = 'USERS',
+  BORROWINGS = 'BORROWINGS',
+  GENRE = 'GENRE'
 
 }
 @Component({
@@ -16,7 +17,6 @@ export enum Menu{
 })
 export class UserPageComponent {
   formGroup: FormGroup;
-
 
   persons: Array<User> = [];
 
@@ -29,9 +29,13 @@ export class UserPageComponent {
       surname: new FormControl(null, [Validators.required, Validators.minLength(3)])
     })
 
+
   }
 
+  changeMenu(menuItem: Menu): void{
+    this.actualMenu = menuItem;
 
+  }
 
   savePerson(): void {
     if (this.formGroup.controls.id.value) {

@@ -3,6 +3,9 @@ import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from './common/model/user.model'
 import {Genre} from "./common/model/genres.model";
+import {Borrowing} from './common/model/borrowing.model';
+import {Book} from './common/model/book.model';
+
 export enum Menu{
   BOOKS = 'BOOKS',
   USERS = 'USERS',
@@ -23,15 +26,10 @@ export class AppComponent {
   formGenres: FormGroup;
 
   persons: Array<User> = [];
-  books: Array<{
-    name: string;
-    author: string;
-  }> = [];
-  borrows: Array<{
-    name: string;
-    bookname: string;
-  }> = [];
   genres: Array<Genre> = [];
+  borrows: Array<Borrowing> = [];
+  books: Array<Book> = [];
+
   menu = Menu
   actualMenu: Menu = Menu.USERS;
   constructor() {
@@ -41,16 +39,19 @@ export class AppComponent {
       surname: new FormControl(null, [Validators.required, Validators.minLength(3)])
     })
     this.formBooks = new FormGroup({
-      name: new FormControl(),
-      author: new FormControl()
-    })
-    this.formBorrows = new FormGroup({
-      name: new FormControl(),
-      bookname: new FormControl()
+      id: new FormControl(),
+      name: new FormControl(null, Validators.required),
+      author: new FormControl(null, Validators.required)
     })
     this.formGenres = new FormGroup({
       id: new FormControl(),
       genre: new FormControl(null, Validators.required),
+      
+    this.formBorrows = new FormGroup({
+      id: new FormControl(),
+      name: new FormControl(null, Validators.required),
+      bookname: new FormControl(null, [Validators.required])
+      
     })
   }
 
@@ -69,24 +70,31 @@ export class AppComponent {
     }
     this.formGroup.reset();
   }
-  saveBook(): void{
-    this.books.push(this.formBooks.value);
-    this.formBooks.reset()
-  }
-  saveBorrowing(): void{
-    this.borrows.push(this.formBorrows.value);
-    this.formBorrows.reset()
-  }
-
   deletePerson(index: number): void {
     this.persons.splice(index, 1);
   }
   editPerson(index: number): void {
     this.formGroup.setValue(this.persons[index]);
   }
-  deleteGenres(index: number): void {
-    this.genres.splice(index, 1);
+
+  saveBorrowing(): void{
+    if (this.formBorrows.controls.id.value) {
+      const index = this.borrows.findIndex(borrow => borrow.id === this.formBorrows.controls.id.value);
+      if (index !== -1) { this.borrows[index] = this.formBorrows.value; }
+    } else {
+      this.borrows.push({ id: Date.now(),
+        name: this.formBorrows.controls.name.value,
+        bookname: this.formBorrows.controls.bookname.value });
+    }
+    this.formBorrows.reset();
   }
+  deleteBorrow(index: number): void {
+    this.borrows.splice(index, 1);
+  }
+  editBorrow(index: number): void {
+    this.formBorrows.setValue(this.borrows[index]);
+  }
+
   saveGenres(): void {
     if (this.formGenres.controls.id.value) {
       const index = this.genres.findIndex(genre => genre.id === this.formGenres.controls.id.value);
@@ -99,6 +107,27 @@ export class AppComponent {
   }
   editGenres(index: number): void {
     this.formGenres.setValue(this.genres[index]);
+  }
+  deleteGenres(index: number): void {
+    this.genres.splice(index, 1);
+  }
+
+  saveBook(): void {
+    if (this.formBooks.controls.id.value) {
+      const index = this.books.findIndex(book => book.id === this.formBooks.controls.id.value);
+      if (index !== -1) { this.books[index] = this.formBooks.value; }
+    } else {
+      this.books.push({ id: Date.now(),
+        name: this.formBooks.controls.name.value,
+        author: this.formBooks.controls.author.value });
+    }
+    this.formBooks.reset();
+  }
+  editBook(index: number): void {
+    this.formBooks.setValue(this.books[index]);
+  }
+  deleteBook(index: number): void {
+    this.books.splice(index, 1);
   }
 }
 

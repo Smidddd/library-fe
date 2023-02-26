@@ -6,12 +6,20 @@ import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { UserPageComponent } from './user/user-page/user-page.component';
 import { GenrePageComponent } from './genre/genre-page/genre-page.component';
+import { BorrowingsPageComponent } from './borrowings/borrowings-page/borrowings-page.component';
+import { BookPageComponent } from './book/book-page/book-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    
     UserPageComponent,
-    GenrePageComponent
+
+    GenrePageComponent,
+
+    BorrowingsPageComponent,
+
+    BookPageComponent
   ],
     imports: [
         BrowserModule,
