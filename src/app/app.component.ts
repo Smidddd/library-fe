@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from './common/model/user.model'
+import {Borrowing} from './common/model/borrowing.model';
 export enum Menu{
   BOOKS = 'BOOKS',
   USERS = 'USERS',
@@ -26,10 +27,7 @@ export class AppComponent {
     name: string;
     author: string;
   }> = [];
-  borrows: Array<{
-    name: string;
-    bookname: string;
-  }> = [];
+  borrows: Array<Borrowing> = [];
   genres: Array<{
     genre: string;
   }> = [];
@@ -46,8 +44,9 @@ export class AppComponent {
       author: new FormControl()
     })
     this.formBorrows = new FormGroup({
-      name: new FormControl(),
-      bookname: new FormControl()
+      id: new FormControl(),
+      name: new FormControl(null, Validators.required),
+      bookname: new FormControl(null, [Validators.required])
     })
     this.formGenres = new FormGroup({
       genre: new FormControl(),
@@ -75,8 +74,15 @@ export class AppComponent {
     this.formBooks.reset()
   }
   saveBorrowing(): void{
-    this.borrows.push(this.formBorrows.value);
-    this.formBorrows.reset()
+    if (this.formBorrows.controls.id.value) {
+      const index = this.borrows.findIndex(borrow => borrow.id === this.formBorrows.controls.id.value);
+      if (index !== -1) { this.borrows[index] = this.formBorrows.value; }
+    } else {
+      this.borrows.push({ id: Date.now(),
+        name: this.formBorrows.controls.name.value,
+        bookname: this.formBorrows.controls.bookname.value });
+    }
+    this.formBorrows.reset();
   }
   saveGenres(): void{
     this.genres.push(this.formGenres.value);
@@ -87,6 +93,12 @@ export class AppComponent {
   }
   editPerson(index: number): void {
     this.formGroup.setValue(this.persons[index]);
+  }
+  deleteBorrow(index: number): void {
+    this.borrows.splice(index, 1);
+  }
+  editBorrow(index: number): void {
+    this.formBorrows.setValue(this.borrows[index]);
   }
 
 }

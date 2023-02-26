@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { UserPageComponent } from './user/user-page/user-page.component';
+import { BorrowingsPageComponent } from './borrowings/borrowings-page/borrowings-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserPageComponent
+    UserPageComponent,
+    BorrowingsPageComponent
   ],
     imports: [
         BrowserModule,
