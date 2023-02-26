@@ -1,8 +1,8 @@
 
 
 <div class="menu" style="margin-bottom: 10px">
-  <button (click)="changeMenu(menu.USERS)">Pouzivatelia</button>
-  <button (click)="changeMenu(menu.BOOKS)">Knihy</button>
+  <button (click)="changeMenu(menu.USERS)" routerLink="/user" >Pouzivatelia</button>
+  <button (click)="changeMenu(menu.BOOKS)" routerLink="/book" >Knihy</button>
   <button (click)="changeMenu(menu.BORROWINGS)">Vypozicky</button>
   <button (click)="changeMenu(menu.GENRE)">Zaner</button>
 </div>
@@ -14,29 +14,9 @@
 </ng-container>
 
 <ng-container *ngIf="actualMenu === menu.BOOKS">
-  <h1>Knihy</h1>
-  <form [formGroup]="formBooks" (submit)="saveBook()">
-    <label>Nazov Knihy:
-      <input type="text" formControlName="name"/>
-    </label>
-    <label>Autor:
-      <input type="text" formControlName="author"/>
-    </label>
+  <h3>BOOKS</h3>
 
-    <button type="submit">Ulozit
-    </button>
-  </form>
-
-  <table *ngIf="books.length">
-    <tr>
-      <th>Nazov</th>
-      <th>Autor</th>
-    </tr>
-    <tr *ngFor="let book of books">
-      <td>{{book.name}}</td>
-      <td>{{book.author}}</td>
-    </tr>
-  </table>
+  <router-outlet></router-outlet>
 </ng-container>
 
 
