@@ -2,12 +2,16 @@
 
 <div class="menu" style="margin-bottom: 10px">
   <button (click)="changeMenu(menu.USERS)" routerLink="/user">Pouzivatelia</button>
+  <button (click)="changeMenu(menu.GENRE)" routerLink="/genre">Zaner</button>
   <button (click)="changeMenu(menu.BOOKS)" routerLink="/book" >Knihy</button>
   <button (click)="changeMenu(menu.BORROWINGS)" routerLink="/borrowings">Vypozicky</button>
 </div>
 
 <ng-container *ngIf="actualMenu === menu.USERS">
   <h3>POUŽÍVATELIA</h3>
+  <router-outlet></router-outlet>
+</ng-container>
+<ng-container *ngIf="actualMenu === menu.GENRE">
   <router-outlet></router-outlet>
 </ng-container>
 <ng-container *ngIf="actualMenu === menu.BOOKS">

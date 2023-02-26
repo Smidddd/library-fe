@@ -18,23 +18,6 @@ export enum Menu{
 export class UserPageComponent {
   formGroup: FormGroup;
 
-  formBooks: FormGroup;
-  formBorrows: FormGroup;
-  formGenres: FormGroup;
-
-  persons: Array<User> = [];
-  books: Array<{
-    name: string;
-    author: string;
-  }> = [];
-  borrows: Array<{
-    name: string;
-    bookname: string;
-  }> = [];
-  genres: Array<{
-    genre: string;
-  }> = [];
-
   persons: Array<User> = [];
 
   menu = Menu
@@ -45,18 +28,8 @@ export class UserPageComponent {
       name: new FormControl(null, Validators.required),
       surname: new FormControl(null, [Validators.required, Validators.minLength(3)])
     })
-    this.formBooks = new FormGroup({
-      name: new FormControl(),
-      author: new FormControl()
-    })
-    this.formBorrows = new FormGroup({
-      name: new FormControl(),
-      bookname: new FormControl()
-    })
-    this.formGenres = new FormGroup({
-      genre: new FormControl(),
 
-    })
+
   }
 
   changeMenu(menuItem: Menu): void{
@@ -75,21 +48,6 @@ export class UserPageComponent {
     }
     this.formGroup.reset();
   }
-  saveBook(): void{
-    this.books.push(this.formBooks.value);
-    this.formBooks.reset()
-  }
-  saveBorrowing(): void{
-    this.borrows.push(this.formBorrows.value);
-    this.formBorrows.reset()
-  }
-  saveGenres(): void{
-    this.genres.push(this.formGenres.value);
-    this.formGenres.reset()
-  }
-
-
-
   deletePerson(index: number): void {
     this.persons.splice(index, 1);
   }
