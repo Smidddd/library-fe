@@ -1,57 +1,32 @@
 import { Component } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../common/model/user.model";
-
-export enum Menu{
-
-  BOOKS = 'BOOKS',
-  USERS = 'USERS',
-  BORROWINGS = 'BORROWINGS',
-  GENRE = 'GENRE'
-
-}
 @Component({
   selector: 'app-user-page',
   templateUrl: './user-page.component.html',
   styleUrls: ['./user-page.component.css']
 })
 export class UserPageComponent {
-  formGroup: FormGroup;
-
   persons: Array<User> = [];
+  person?: User;
 
-  menu = Menu
-  actualMenu: Menu = Menu.USERS;
-  constructor() {
-    this.formGroup = new FormGroup({
-      id: new FormControl(),
-      name: new FormControl(null, Validators.required),
-      surname: new FormControl(null, [Validators.required, Validators.minLength(3)])
-    })
-
-
+  createPerson(person: User): void {
+    this.persons.push(person);
+    console.log('PERSONS:', this.persons);
   }
-
-  changeMenu(menuItem: Menu): void{
-    this.actualMenu = menuItem;
-
-  }
-
-  savePerson(): void {
-    if (this.formGroup.controls.id.value) {
-      const index = this.persons.findIndex(person => person.id === this.formGroup.controls.id.value);
-      if (index !== -1) { this.persons[index] = this.formGroup.value; }
-    } else {
-      this.persons.push({ id: Date.now(),
-        name: this.formGroup.controls.name.value,
-        surname: this.formGroup.controls.surname.value });
+  updatePerson(person: User): void {
+    const index = this.persons.findIndex(
+      person => person.id === person.id);
+    if (index !== -1) {
+      this.persons[index] = person;
+      this.person = undefined;
     }
-    this.formGroup.reset();
   }
-  deletePerson(index: number): void {
-    this.persons.splice(index, 1);
+  selectPersonToUpdate(personId: number): void {
+    this.person = this.persons.find(person => person.id === personId);
   }
-  editPerson(index: number): void {
-    this.formGroup.setValue(this.persons[index]);
+  deletePerson(personId: number): void {
+    const index = this.persons.findIndex(person =>
+      person.id === personId);
+    if (index !== -1) { this.persons.splice(index, 1); }
   }
 }

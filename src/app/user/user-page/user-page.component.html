@@ -1,34 +1,11 @@
-
-<ng-container *ngIf="actualMenu === menu.USERS">
-  <h1>Pouzivatelia</h1>
-
-  <form [formGroup]="formGroup" (submit)="savePerson()">
-    <label>Meno:
-      <input type="text" formControlName="name" />
-    </label>
-    <p class="invalid-text" *ngIf="formGroup.controls.name.invalid">Zadajte meno</p>
-
-    <label>Priezvisko:
-      <input type="text" formControlName="surname"/>
-    </label>
-    <p *ngIf="formGroup.controls.surname.errors?.required" class="invalid-text">Zadajte priezvisko</p>
-    <p *ngIf="formGroup.controls.surname.errors?.minlength" class="invalid-text">Minimálna dĺžka
-      priezviska sú 3 znaky</p>
-
-    <button type="submit" [disabled]="formGroup.invalid">Uložiť</button>
-
-    <button type="reset">Zrušiť</button>
-  </form>
-
-  <table *ngIf="persons.length">
-    <tr *ngFor="let person of persons; let i = index">
-      <td>{{ person.name }}</td>
-      <td>{{ person.surname }}</td>
-      <td>
-        <button (click)="editPerson(i)">Upraviť</button>
-        <button (click)="deletePerson(i)">Zmazať</button>
-      </td>
-    </tr>
-  </table>
-</ng-container>
-
+<h3>POUŽÍVATELIA</h3>
+<app-user-form
+  [personData]="person"
+  (formCreate)="createPerson($event)"
+  (formUpdate)="updatePerson($event)">
+</app-user-form>
+<app-user-list
+  [persons]="persons"
+  (personToUpdate)="selectPersonToUpdate($event)"
+  (personToDelete)="deletePerson($event)">
+</app-user-list>

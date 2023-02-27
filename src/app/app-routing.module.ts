@@ -23,6 +23,11 @@ const routes: Routes = [
   {
     path: 'book',
     component: BookPageComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'user',
+    pathMatch: 'full'
   }
 ];
 

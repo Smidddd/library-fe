@@ -1,10 +1,7 @@
 
 import { Component } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {User} from './common/model/user.model'
-import {Genre} from "./common/model/genres.model";
-import {Borrowing} from './common/model/borrowing.model';
-import {Book} from './common/model/book.model';
+import {Router} from "@angular/router";
+
 
 export enum Menu{
   BOOKS = 'BOOKS',
@@ -20,11 +17,27 @@ export enum Menu{
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  menu = Menu
-  actualMenu: Menu = Menu.USERS;
+  menu = Menu;
 
-  changeMenu(menuItem: Menu): void{
-    this.actualMenu = menuItem;
+  constructor(private router: Router) {
+  }
+
+  changeMenu(menuItem: Menu): void {
+    switch (menuItem) {
+      case Menu.USERS:
+        this.router.navigate(['user']);
+        break;
+      case Menu.BOOKS:
+        this.router.navigate(['book']);
+        break;
+      case Menu.BORROWINGS:
+        this.router.navigate(['borrowing']);
+        break;
+      case Menu.GENRE:
+        this.router.navigate(['genre']);
+        break;
+    }
+
   }
 }
 
