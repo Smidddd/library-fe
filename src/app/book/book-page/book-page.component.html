@@ -1,31 +1,13 @@
-
-<ng-container *ngIf="actualMenu === menu.BOOKS">
-  <form [formGroup]="formBooks" (submit)="saveBook()">
-    <label>Nazov:
-      <input type="text" formControlName="name" />
-    </label>
-    <p class="invalid-text" *ngIf="formBooks.controls.name.invalid">Zadajte nazov</p>
-    <label>Autor:
-      <input type="text" formControlName="author"/>
-    </label>
-    <p *ngIf="formBooks.controls.author.errors?.required" class="invalid-text">Zadajte autora</p>
-    <button type="submit" [disabled]="formBooks.invalid">
-      Uložiť
-    </button>
-    <button type="reset">Zrušiť</button>
-  </form>
-
-  <table *ngIf="books.length">
-    <tr *ngFor="let book of books; let i = index">
-      <td>{{ book.name }}</td>
-      <td>{{ book.author }}</td>
-      <td>
-        <button (click)="editBook(i)">Upraviť</button>
-        <button (click)="deleteBook(i)">Zmazať</button>
-      </td>
-    </tr>
-  </table>
-
-</ng-container>
-
+<h3>KNIHY</h3>
+<app-book-form
+  [bookData]="book"
+  (formCreate)="createBook($event)"
+  (formUpdate)="updateBook($event)">
+</app-book-form>
+<app-book-list
+  [books]="books"
+  (bookToUpdate)="
+  selectBookToUpdate($event)"
+  (bookToDelete)="deleteBook($event)">
+</app-book-list>
 
