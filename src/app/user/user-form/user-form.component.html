@@ -7,8 +7,8 @@
   <label>Priezvisko:
     <input type="text" formControlName="surname"/>
   </label>
-  <p *ngIf="formGroup.controls.surname.errors?.required" class="invalid-text">Zadajte priezvisko</p>
-  <p *ngIf="formGroup.controls.surname.errors?.minlength" class="invalid-text">Minimálna dĺžka
+  <p *ngIf="formGroup.controls.bookname.errors?.required" class="invalid-text">Zadajte priezvisko</p>
+  <p *ngIf="formGroup.controls.bookname.errors?.minlength" class="invalid-text">Minimálna dĺžka
     priezviska sú 3 znaky</p>
 
   <button type="submit" [disabled]="formGroup.invalid">Uložiť</button>
