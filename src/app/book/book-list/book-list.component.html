@@ -1,0 +1,10 @@
+<table *ngIf="books.length">
+  <tr *ngFor="let book of books">
+    <td>{{ book.name }}</td>
+    <td>{{ book.author }}</td>
+    <td>
+      <button (click)="editBook(book.id)">Upraviť</button>
+      <button (click)="deleteBook(book.id)">Zmazať</button>
+    </td>
+  </tr>
+</table>
