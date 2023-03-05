@@ -1,0 +1,14 @@
+<form [formGroup]="formBooks" (submit)="saveBook()">
+  <label>Nazov:
+    <input type="text" formControlName="name" />
+  </label>
+  <p class="invalid-text" *ngIf="formBooks.controls.name.invalid">Zadajte nazov</p>
+  <label>Autor:
+    <input type="text" formControlName="author"/>
+  </label>
+  <p *ngIf="formBooks.controls.author.errors?.required" class="invalid-text">Zadajte autora</p>
+  <button type="submit" [disabled]="formBooks.invalid">
+    Uložiť
+  </button>
+  <button type="reset">Zrušiť</button>
+</form>
