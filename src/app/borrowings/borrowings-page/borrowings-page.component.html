@@ -1,26 +1,11 @@
-<ng-container *ngIf="actualMenu === menu.BORROWINGS">
-<h1>Vypozicane</h1>
-<form [formGroup]="formBorrows" (submit)="saveBorrowing()">
-  <label>Meno:
-    <input type="text" formControlName="name" />
-  </label>
-  <p class="invalid-text" *ngIf="formBorrows.controls.name.invalid">Zadajte meno</p>
-  <label>Nazov knihy:
-    <input type="text" formControlName="bookname" />
-  </label>
-  <p class="invalid-text" *ngIf="formBorrows.controls.name.invalid">Zadajte nazov knihy</p>
-  <button type="submit" [disabled]="formBorrows.invalid">Uložiť</button>
-  <button type="reset">Zrušiť</button>
-</form>
-
-<table *ngIf="borrows.length">
-  <tr *ngFor="let borrow of borrows; let i = index">
-    <td>{{ borrow.name }}</td>
-    <td>{{ borrow.bookname }}</td>
-    <td>
-      <button (click)="editBorrow(i)">Upraviť</button>
-      <button (click)="deleteBorrow(i)">Zmazať</button>
-    </td>
-  </tr>
-</table>
-</ng-container>
+<h3>VYPOZICKY</h3>
+<app-borrowings-form
+  [borrowingData]="borrowing"
+  (formCreate)="createBorrowing($event)"
+  (formUpdate)="updateBorrowing($event)">
+</app-borrowings-form>
+<app-borrowings-list
+  [borrowings]="borrowings"
+  (borrowingToUpdate)="selectBorrowingToUpdate($event)"
+  (borrowingToDelete)="deleteBorrowing($event)">
+</app-borrowings-list>

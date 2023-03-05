@@ -10,11 +10,13 @@ import { BorrowingsPageComponent } from './borrowings/borrowings-page/borrowings
 import { BookPageComponent } from './book/book-page/book-page.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserListComponent } from './user/user-list/user-list.component';
+import { BorrowingsFormComponent } from './borrowings/borrowings-form/borrowings-form.component';
+import { BorrowingsListComponent } from './borrowings/borrowings-list/borrowings-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    
+
     UserPageComponent,
 
     GenrePageComponent,
@@ -22,8 +24,10 @@ import { UserListComponent } from './user/user-list/user-list.component';
     BorrowingsPageComponent,
 
     BookPageComponent,
-     UserFormComponent,
-     UserListComponent
+    UserFormComponent,
+    UserListComponent,
+    BorrowingsFormComponent,
+    BorrowingsListComponent
   ],
     imports: [
         BrowserModule,

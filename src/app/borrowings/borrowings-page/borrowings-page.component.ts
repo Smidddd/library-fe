@@ -1,45 +1,33 @@
 import { Component } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Borrowing} from "../../common/model/borrowing.model";
-export enum Menu{
-  BORROWINGS = 'BORROWINGS'
-}
+
 @Component({
   selector: 'app-borrowings-page',
   templateUrl: './borrowings-page.component.html',
   styleUrls: ['./borrowings-page.component.css']
 })
 export class BorrowingsPageComponent {
-  formBorrows: FormGroup;
-  borrows: Array<Borrowing> = [];
-  menu = Menu
-  actualMenu: Menu = Menu.BORROWINGS;
-  constructor() {
-    this.formBorrows = new FormGroup({
-      id: new FormControl(),
-      name: new FormControl(null, Validators.required),
-      bookname: new FormControl(null, [Validators.required])
-    })
-  }
+  borrowings: Array<Borrowing> = [];
+  borrowing?: Borrowing;
 
-  changeMenu(menuItem: Menu): void{
-    this.actualMenu = menuItem;
+  createBorrowing(borrowing: Borrowing): void {
+    this.borrowings.push(borrowing);
+    console.log('PERSONS:', this.borrowings);
   }
-  saveBorrowing(): void{
-    if (this.formBorrows.controls.id.value) {
-      const index = this.borrows.findIndex(borrow => borrow.id === this.formBorrows.controls.id.value);
-      if (index !== -1) { this.borrows[index] = this.formBorrows.value; }
-    } else {
-      this.borrows.push({ id: Date.now(),
-        name: this.formBorrows.controls.name.value,
-        bookname: this.formBorrows.controls.bookname.value });
+  updateBorrowing(borrowing: Borrowing): void {
+    const index = this.borrowings.findIndex(
+      borrowing => borrowing.id === borrowing.id);
+    if (index !== -1) {
+      this.borrowings[index] = borrowing;
+      this.borrowing = undefined;
     }
-    this.formBorrows.reset();
   }
-  deleteBorrow(index: number): void {
-    this.borrows.splice(index, 1);
+  selectBorrowingToUpdate(borrowingId: number): void {
+    this.borrowing = this.borrowings.find(borrowing => borrowing.id === borrowingId);
   }
-  editBorrow(index: number): void {
-    this.formBorrows.setValue(this.borrows[index]);
+  deleteBorrowing(borrowingId: number): void {
+    const index = this.borrowings.findIndex(borrowing =>
+      borrowing.id === borrowingId);
+    if (index !== -1) { this.borrowings.splice(index, 1); }
   }
 }

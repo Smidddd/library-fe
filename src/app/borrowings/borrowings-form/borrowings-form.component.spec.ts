@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GenrePageComponent } from './genre-page.component';
+import { BorrowingsFormComponent } from './borrowings-form.component';
 
-describe('GenrePageComponent', () => {
-  let component: GenrePageComponent;
-  let fixture: ComponentFixture<GenrePageComponent>;
+describe('BorrowingsFormComponent', () => {
+  let component: BorrowingsFormComponent;
+  let fixture: ComponentFixture<BorrowingsFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GenrePageComponent ]
+      declarations: [ BorrowingsFormComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GenrePageComponent);
+    fixture = TestBed.createComponent(BorrowingsFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
