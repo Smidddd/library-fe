@@ -1,0 +1,10 @@
+<form [formGroup]="formGenres" (submit)="saveGenre()">
+  <label>Zaner:
+    <input type="text" formControlName="genre" />
+  </label>
+  <p class="invalid-text" *ngIf="formGenres.controls.genre.invalid"></p>
+  <button type="submit" [disabled]="formGenres.invalid">
+    Uložiť
+  </button>
+  <button type="reset">Zrušiť</button>
+</form>
