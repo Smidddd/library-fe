@@ -6,44 +6,29 @@ import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { UserPageComponent } from './user/user-page/user-page.component';
 import { GenrePageComponent } from './genre/genre-page/genre-page.component';
-import { BorrowingsPageComponent } from './borrowings/borrowings-page/borrowings-page.component';
-import { BookPageComponent } from './book/book-page/book-page.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserListComponent } from './user/user-list/user-list.component';
-import { BorrowingsFormComponent } from './borrowings/borrowings-form/borrowings-form.component';
-import { BorrowingsListComponent } from './borrowings/borrowings-list/borrowings-list.component';
-import { BookFormComponent } from './book/book-form/book-form.component';
-import { BookListComponent } from './book/book-list/book-list.component';
-
+import { GenreFormComponent } from './genre/genre-form/genre-form.component';
+import { GenreListComponent } from './genre/genre-list/genre-list.component';
 
 @NgModule({
-  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-
     UserPageComponent,
-
     GenrePageComponent,
-
-    BorrowingsPageComponent,
-
-    BookPageComponent,
-
     UserFormComponent,
     UserListComponent,
-    BorrowingsFormComponent,
-    BorrowingsListComponent,
-    BookFormComponent,
-    BookListComponent
-
+    GenreFormComponent,
+    GenreListComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule
-  ],
-  providers: []
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AppRoutingModule
+    ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

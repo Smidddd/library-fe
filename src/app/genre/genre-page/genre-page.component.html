@@ -1,0 +1,14 @@
+<h3>ZANRE</h3>
+<app-genre-form
+  [genreData]="genre"
+  (formCreate)="createGenre($event)"
+  (formUpdate)="updateGenre($event)">
+
+</app-genre-form>
+<app-genre-list
+  [genres]="genres"
+  (genreToUpdate)="
+selectGenreToUpdate($event)"
+  (genreToDelete)="deleteGenre($event)">
+</app-genre-list>
+
