@@ -10,16 +10,28 @@ import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { GenreFormComponent } from './genre/genre-form/genre-form.component';
 import { GenreListComponent } from './genre/genre-list/genre-list.component';
+import {BookFormComponent} from "./book/book-form/book-form.component";
+import {BookListComponent} from "./book/book-list/book-list.component";
+import {BorrowingsFormComponent} from "./borrowings/borrowings-form/borrowings-form.component";
+import {BorrowingsListComponent} from "./borrowings/borrowings-list/borrowings-list.component";
+import {BookPageComponent} from "./book/book-page/book-page.component";
+import {BorrowingsPageComponent} from "./borrowings/borrowings-page/borrowings-page.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     UserPageComponent,
     GenrePageComponent,
+    BookPageComponent,
+    BorrowingsPageComponent,
     UserFormComponent,
     UserListComponent,
     GenreFormComponent,
-    GenreListComponent
+    GenreListComponent,
+    BookFormComponent,
+    BookListComponent,
+    BorrowingsFormComponent,
+    BorrowingsListComponent
   ],
     imports: [
         BrowserModule,
