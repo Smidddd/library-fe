@@ -16,8 +16,8 @@ export class UserFormComponent {
   constructor() {
     this.formGroup = new FormGroup({
       id: new FormControl(),
-      name: new FormControl(null, Validators.required),
-      surname: new FormControl(null, [Validators.required, Validators.minLength(3)])
+      firstName: new FormControl(null, Validators.required),
+      lastName: new FormControl(null, [Validators.required, Validators.minLength(3)])
     })
   }
   @Input()
@@ -40,8 +40,8 @@ export class UserFormComponent {
   private prepareUser(id?: number): User {
     return {
       id: id !== undefined ? id : Date.now(),
-      name: this.formGroup.controls.name.value,
-      surname: this.formGroup.controls.surname.value,
+      firstName: this.formGroup.controls.firstName.value,
+      lastName: this.formGroup.controls.lastName.value,
     };
   }
 

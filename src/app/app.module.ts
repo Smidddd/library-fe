@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {UserService} from './common/service/user.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -16,6 +16,7 @@ import {BorrowingsFormComponent} from "./borrowings/borrowings-form/borrowings-f
 import {BorrowingsListComponent} from "./borrowings/borrowings-list/borrowings-list.component";
 import {BookPageComponent} from "./book/book-page/book-page.component";
 import {BorrowingsPageComponent} from "./borrowings/borrowings-page/borrowings-page.component";
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,9 +39,12 @@ import {BorrowingsPageComponent} from "./borrowings/borrowings-page/borrowings-p
         AppRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        AppRoutingModule
+        AppRoutingModule,
+        HttpClientModule
     ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
