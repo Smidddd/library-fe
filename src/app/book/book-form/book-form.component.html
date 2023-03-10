@@ -1,12 +1,32 @@
 <form [formGroup]="formBooks" (submit)="saveBook()">
+  <label>Krstne meno autora:
+    <input type="text" formControlName="authorFirstName" />
+  </label>
+  <p class="invalid-text" *ngIf="formBooks.controls.authorFirstName.invalid">Zadajte krstne meno autora</p>
+
+  <label>Priezvisko autora:
+    <input type="text" formControlName="authorLastName"/>
+  </label>
+  <p *ngIf="formBooks.controls.authorLastName.errors?.required" class="invalid-text">Zadajte priezvisko autora</p>
+
   <label>Nazov:
-    <input type="text" formControlName="name" />
+    <input type="text" formControlName="title"/>
   </label>
-  <p class="invalid-text" *ngIf="formBooks.controls.name.invalid">Zadajte nazov</p>
-  <label>Autor:
-    <input type="text" formControlName="author"/>
+  <p *ngIf="formBooks.controls.title.errors?.required" class="invalid-text">Zadajte nazov knihy</p>
+  <label>Isbn:
+    <input type="text" formControlName="isbn"/>
   </label>
-  <p *ngIf="formBooks.controls.author.errors?.required" class="invalid-text">Zadajte autora</p>
+  <p *ngIf="formBooks.controls.isbn.errors?.required" class="invalid-text">Zadajte Isbn</p>
+  <label>Pocet knih:
+    <input type="text" formControlName="count"/>
+  </label>
+  <p *ngIf="formBooks.controls.count.errors?.required" class="invalid-text">Zadajte pocet knih</p>
+
+  <label>Vyber kategorii (pouzitie: 0,1,2):
+    <input type="text" formControlName="categoryIds"/>
+  </label>
+  <p *ngIf="formBooks.controls.categoryIds.errors?.required" class="invalid-text">Zadajte pocet knih</p>
+
   <button type="submit" [disabled]="formBooks.invalid">
     Uložiť
   </button>

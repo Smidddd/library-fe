@@ -1,5 +1,10 @@
 export interface Book {
-  id: number;
-  name: string;
-  author: string;
+  bookId: number;
+  authorFirstName: string;
+  authorLastName: string;
+  title: string;
+  isbn: number;
+  count: number;
+
+  categoryIds: Array<number>;
 }

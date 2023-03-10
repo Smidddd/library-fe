@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
 })
 export class UserService {
 
-  private url = 'http://labs.fpv.umb.sk:8080/api/customers';
+  private url = 'http://localhost:8080/api/customers';
 
   constructor(private http: HttpClient) { }
 
@@ -19,7 +19,7 @@ export class UserService {
     return this.http.get<User>(`${this.url}/${userId}`);
   }
 
-  createUser(user: User): Observable<number> {
+  createPerson(user: User): Observable<number> {
     return this.http.post<number>(this.url, user);
   }
 
@@ -28,6 +28,6 @@ export class UserService {
   }
 
   deleteUser(userId: number): Observable<void> {
-    return this.http.delete<void>(`${this.url}${userId}`);
+    return this.http.delete<void>(`${this.url}/${userId}`);
   }
 }
