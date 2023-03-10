@@ -18,6 +18,8 @@ import {BorrowingsPageComponent} from "./borrowings/borrowings-page/borrowings-p
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {UserService} from './common/service/user.service';
 import {GenreService} from "./common/service/genre.service";
+import {BooksService} from "./common/service/books.service";
+import {BorrowingsService} from "./common/service/borrowings.service";
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import {GenreService} from "./common/service/genre.service";
     ],
   providers: [
     UserService,
-    GenreService
+    GenreService,
+    BooksService,
+    BorrowingsService
   ],
   bootstrap: [AppComponent]
 })

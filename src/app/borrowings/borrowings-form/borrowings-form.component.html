@@ -1,13 +1,13 @@
 
 <form [formGroup]="formBorrows" (submit)="saveBorrowing()">
-  <label>Meno:
-    <input type="text" formControlName="name" />
+  <label>ID knihy:
+    <input type="text" formControlName="bookId" />
   </label>
-  <p class="invalid-text" *ngIf="formBorrows.controls.name.invalid">Zadajte meno</p>
-  <label>Nazov knihy:
-    <input type="text" formControlName="bookname" />
+  <p class="invalid-text" *ngIf="formBorrows.controls.bookId.invalid">Zadajte ID knihy</p>
+  <label>ID pouzivatela:
+    <input type="text" formControlName="customerId" />
   </label>
-  <p class="invalid-text" *ngIf="formBorrows.controls.name.invalid">Zadajte nazov knihy</p>
+  <p class="invalid-text" *ngIf="formBorrows.controls.customerId.invalid">Zadajte ID pouzivatela</p>
   <button type="submit" [disabled]="formBorrows.invalid">Uložiť</button>
   <button type="reset">Zrušiť</button>
 </form>
