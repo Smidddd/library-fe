@@ -1,6 +1,6 @@
 <table *ngIf="genres.length">
   <tr *ngFor="let genre of genres; let i = index">
-    <td>{{ genre.genre }}</td>
+    <td>{{ genre.name }}</td>
     <td>
       <button (click)="updateGenres(genre.id)">Upraviť</button>
       <button (click)="deleteGenre(genre.id)">Zmazať</button>
