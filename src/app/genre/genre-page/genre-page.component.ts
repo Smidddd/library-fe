@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {User} from "../../common/model/user.model";
 import {Genre} from "../../common/model/genres.model";
+import {HttpClient} from '@angular/common/http';
+import {GenreService} from "../../common/service/genre.service";
 
 
 
@@ -15,39 +16,38 @@ export enum Menu{
   styleUrls: ['./genre-page.component.css']
 })
 export class GenrePageComponent {
-  formGenres: FormGroup;
 
   genres: Array<Genre> = [];
   genre?: Genre;
 
   menu = Menu
   actualMenu: Menu = Menu.GENRE;
-  constructor() {
-    this.formGenres = new FormGroup({
-      id: new FormControl(),
-      genre: new FormControl(null, Validators.required),
-    })
+  constructor(private service: GenreService) {
+    this.getGenres();
   }
-  updateGenre(genre: Genre): void {
-    const index = this.genres.findIndex(
-      genre => genre.id === genre.id);
-    if (index !== -1) {
-      this.genres[index] = genre;
-      this.genre = undefined;
-    }
+
+  getGenres(): void {
+    this.service.getGenres().subscribe((genres: Genre[]) => { this.genres = genres; });
   }
 
   createGenre(genre: Genre): void {
-    this.genres.push(genre);
-    console.log('PERSONS:', this.genres);
+    this.service.createGenre(genre).subscribe(() => { console.log('Osoba bola úspešne uložená.');
+      this.getGenres();
+    })
   }
+
   selectGenreToUpdate(genreId: number): void {
-    this.genre = this.genres.find(genre =>
-      genre.id === genreId);
+    this.service.getGenre(genreId).subscribe((genre: Genre) => { this.genre = genre; });
   }
+  updateGenre(genre: Genre): void {
+    this.service.updateGenre(genre).subscribe(() => { console.log('Osoba bola úspešne zmenená.');
+      this.getGenres();
+    })
+  }
+
   deleteGenre(genreId: number): void {
-    const index = this.genres.findIndex(genre =>
-      genre.id === genreId);
-    if (index !== -1) { this.genres.splice(index, 1); }
+    this.service.deleteGenre(genreId).subscribe(() => { console.log('Osoba bola úspešne zmazaná.');
+      this.getGenres();
+    })
   }
 }

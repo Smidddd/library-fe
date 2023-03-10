@@ -25,7 +25,7 @@ export class GenreFormComponent {
   constructor() {
     this.formGenres = new FormGroup({
       id: new FormControl(),
-      genre: new FormControl(null, Validators.required),
+      name: new FormControl(null, Validators.required),
     })
   }
 
@@ -44,7 +44,7 @@ export class GenreFormComponent {
   private prepareGenre(id?: number): Genre {
     return {
       id: id !== undefined ? id : Date.now(),
-      genre: this.formGenres.controls.genre.value
+      name: this.formGenres.controls.name.value
     }
   }
 }
