@@ -2,13 +2,13 @@
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Book} from "../../common/model/book.model";
+
 @Component({
   selector: 'app-book-form',
   templateUrl: './book-form.component.html',
   styleUrls: ['./book-form.component.css']
 })
 export class BookFormComponent {
-
   @Output()
   formCreate = new EventEmitter<Book>();
   formBooks: FormGroup;
@@ -17,11 +17,14 @@ export class BookFormComponent {
 
   constructor() {
     this.formBooks = new FormGroup({
-      id: new FormControl(),
-      name: new FormControl(null, Validators.required),
-      author: new FormControl(null, Validators.required)
+      bookId: new FormControl(),
+      authorFirstName: new FormControl(null, Validators.required),
+      authorLastName: new FormControl(null, Validators.required),
+      title: new FormControl(null, Validators.required),
+      isbn: new FormControl(null, Validators.required),
+      count: new FormControl(null, Validators.required),
+      categoryIds: new FormControl(null,Validators.required)
     })
-
   }
   @Input()
   set bookData(book: Book | undefined) {
@@ -31,19 +34,27 @@ export class BookFormComponent {
   }
   saveBook(): void {
     if (this.formBooks.valid) {
-      if (this.formBooks.controls.id.value) {
+      if (this.formBooks.controls.bookId.value) {
         this.formUpdate.emit(
-          this.prepareBook(this.formBooks.controls.id.value));
+          this.prepareBook(this.formBooks.controls.bookId.value));
       } else {
         this.formCreate.emit(this.prepareBook());
       }
       this.formBooks.reset();
     } }
   private prepareBook(id?: number): Book {
+    let string = this.formBooks.controls.categoryIds.value
+    let array = string.split(",")
+    console.log(array)
     return {
-      id: id !== undefined ? id : Date.now(),
-      name: this.formBooks.controls.name.value,
-      author: this.formBooks.controls.author.value, };
+      bookId: id !== undefined ? id : Date.now(),
+      authorFirstName: this.formBooks.controls.authorFirstName.value,
+      authorLastName: this.formBooks.controls.authorLastName.value,
+      title: this.formBooks.controls.title.value,
+      isbn: this.formBooks.controls.isbn.value,
+      count: this.formBooks.controls.count.value,
+      categoryIds: array
+    };
   }
 }
 

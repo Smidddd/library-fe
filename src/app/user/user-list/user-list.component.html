@@ -1,8 +1,8 @@
-<h1>Pouzivatelia</h1>
 <table *ngIf="persons.length">
   <tr *ngFor="let person of persons">
     <td>{{ person.firstName }}</td>
     <td>{{ person.lastName }}</td>
+    <td>{{ person.emailContact }}</td>
     <td>
       <button (click)="updatePerson(person.id)">Upraviť</button>
       <button (click)="deletePerson(person.id)">Zmazať</button>

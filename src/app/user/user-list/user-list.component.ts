@@ -12,11 +12,12 @@ export class UserListComponent {
 
   @Output()
   personToUpdate = new EventEmitter<number>();
+  @Output()
+  personToDelete = new EventEmitter<number>();
   updatePerson(userId: number): void { // NOVE
     this.personToUpdate.emit(userId);
   }
-  @Output()
-  personToDelete = new EventEmitter<number>();
+
   deletePerson(userId: number): void {
     this.personToDelete.emit(userId);
   }

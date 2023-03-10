@@ -4,12 +4,19 @@
   </label>
   <p class="invalid-text" *ngIf="formGroup.controls.firstName.invalid">Zadajte meno</p>
 
+
   <label>Priezvisko:
     <input type="text" formControlName="lastName"/>
   </label>
   <p *ngIf="formGroup.controls.lastName.errors?.required" class="invalid-text">Zadajte priezvisko</p>
   <p *ngIf="formGroup.controls.lastName.errors?.minlength" class="invalid-text">Minimálna dĺžka
     priezviska sú 3 znaky</p>
+
+
+  <label>E-mail:
+    <input type="text" formControlName="emailContact" />
+  </label>
+  <p class="invalid-text" *ngIf="formGroup.controls.emailContact.invalid">Zadajte email</p>
 
   <button type="submit" [disabled]="formGroup.invalid">Uložiť</button>
 
