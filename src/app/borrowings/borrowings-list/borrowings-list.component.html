@@ -1,8 +1,8 @@
 <h1>Vypozicky</h1>
 <table *ngIf="borrowings.length">
   <tr *ngFor="let borrowing of borrowings">
-    <td>{{ borrowing.name }}</td>
-    <td>{{ borrowing.bookname }}</td>
+    <td>{{ borrowing.bookId }}</td>
+    <td>{{ borrowing.customerId }}</td>
     <td>
       <button (click)="updateBorrowing(borrowing.id)">Upraviť</button>
       <button (click)="deleteBorrowing(borrowing.id)">Zmazať</button>

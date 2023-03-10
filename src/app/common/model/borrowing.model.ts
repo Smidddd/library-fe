@@ -1,5 +1,5 @@
 export interface Borrowing {
   id: number;
-  name: string;
-  bookname: string;
+  bookId: string;
+  customerId: string;
 }
