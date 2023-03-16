@@ -20,5 +20,7 @@
 
   <button type="submit" [disabled]="formGroup.invalid">Uložiť</button>
 
-  <button type="reset">Zrušiť</button>
+  <button type="button" (click)="formCancel.emit()">
+    Zrušiť
+  </button>
 </form>

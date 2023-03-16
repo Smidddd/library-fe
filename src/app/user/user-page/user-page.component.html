@@ -9,3 +9,12 @@
   (personToUpdate)="selectPersonToUpdate($event)"
   (personToDelete)="deletePerson($event)">
 </app-user-list>
+<button (click)="addUserDialog.showModal()">Pridať používateľa</button>
+<dialog #addUserDialog>
+  <div class="header">Pridanie používateľa</div>
+  <div class="content">
+    <app-user-form (formCreate)="createPerson($event); addUserDialog.close()"
+                   (formCancel)="addUserDialog.close()">
+    </app-user-form>
+  </div>
+</dialog>

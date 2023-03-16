@@ -4,15 +4,17 @@ import {UserPageComponent} from "./user/user-page/user-page.component";
 import {GenrePageComponent} from "./genre/genre-page/genre-page.component";
 import {BorrowingsPageComponent} from "./borrowings/borrowings-page/borrowings-page.component";
 import {BookPageComponent} from "./book/book-page/book-page.component";
+import {UserDetailPageComponent} from "./user/user-detail-page/user-detail-page.component";
+
 
 const routes: Routes = [
   {
     path: 'user',
-    component: UserPageComponent
+    component: UserPageComponent,
   },
   {
-    path: 'genre',
-    component: GenrePageComponent
+    path: 'user/:userId',
+    component: UserDetailPageComponent
   },
   {
     path: 'borrowings',

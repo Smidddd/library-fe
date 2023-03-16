@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {Borrowing} from "../../common/model/borrowing.model";
 import {BorrowingsService} from "../../common/service/borrowings.service";
+import {User} from "../../common/model/user.model";
+import {UserService} from "../../common/service/user.service";
 
 @Component({
   selector: 'app-borrowings-page',
@@ -10,11 +12,16 @@ import {BorrowingsService} from "../../common/service/borrowings.service";
 export class BorrowingsPageComponent {
   borrowings: Array<Borrowing> = [];
   borrowing?: Borrowing;
-
-  constructor(private service: BorrowingsService) {
-    this.getBorrowings();
+  users?: User[];
+  constructor(private userService: UserService) {
+    this.getUsers();
   }
-
+  getUsers(): void {
+    this.userService.getUsers().subscribe(users => {
+      this.users = users;
+    })
+  }
+  /*
   getBorrowings(): void {
     this.service.getBorrowings().subscribe((borrowings: Borrowing[]) => { this.borrowings = borrowings; });
   }
@@ -35,5 +42,5 @@ export class BorrowingsPageComponent {
     this.service.deleteBorrowing(borrowingId).subscribe(() => { console.log('Vypozicka bola úspešne zmazaná.');
       this.getBorrowings();
     })
-  }
+  }*/
 }

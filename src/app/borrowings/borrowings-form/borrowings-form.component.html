@@ -1,13 +1,11 @@
 
-<form [formGroup]="formBorrows" (submit)="saveBorrowing()">
-  <label>ID knihy:
-    <input type="text" formControlName="bookId" />
+<form [formGroup]="form" (submit)="saveBorrowing()">
+  <label>Používateľ:
+    <select type="text" formControlName="user">
+      <option *ngFor="let user of users" [value]="user.id">
+        {{ user.firstName + ' ' + user.lastName }}
+      </option>
+    </select>
   </label>
-  <p class="invalid-text" *ngIf="formBorrows.controls.bookId.invalid">Zadajte ID knihy</p>
-  <label>ID pouzivatela:
-    <input type="text" formControlName="customerId" />
-  </label>
-  <p class="invalid-text" *ngIf="formBorrows.controls.customerId.invalid">Zadajte ID pouzivatela</p>
-  <button type="submit" [disabled]="formBorrows.invalid">Uložiť</button>
-  <button type="reset">Zrušiť</button>
+  <button type="submit" [disabled]="form.invalid">Uložiť</button>
 </form>

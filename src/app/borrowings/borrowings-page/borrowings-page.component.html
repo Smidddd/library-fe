@@ -1,11 +1,7 @@
 <h3>VYPOZICKY</h3>
 <app-borrowings-form
-  [borrowingData]="borrowing"
-  (formCreate)="createBorrowing($event)"
-  (formUpdate)="updateBorrowing($event)">
+  [users]="users">
 </app-borrowings-form>
 <app-borrowings-list
-  [borrowings]="borrowings"
-  (borrowingToUpdate)="selectBorrowingToUpdate($event)"
-  (borrowingToDelete)="deleteBorrowing($event)">
+  [borrowings]="borrowings">
 </app-borrowings-list>

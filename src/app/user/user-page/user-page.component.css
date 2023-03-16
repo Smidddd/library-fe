@@ -35,3 +35,17 @@ td button:first-child {
 button[type="reset"] {
   margin-left: 0.5rem;
 }
+dialog {
+  max-height: 330px;
+  width: 335px;
+  border: none;
+}
+
+dialog > .header {
+  padding: 18px;
+  font-size: 25px;
+}
+
+dialog > .content {
+  padding: 18px;
+}
