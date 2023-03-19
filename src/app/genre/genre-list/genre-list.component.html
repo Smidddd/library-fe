@@ -1,9 +1,12 @@
-<table *ngIf="genres.length">
-  <tr *ngFor="let genre of genres; let i = index">
-    <td>{{ genre.name }}</td>
+<div class="table">
+  <table   *ngIf="genres.length" >
+  <tr class="output" *ngFor="let genre of genres; let i = index">
+    <td class="text">{{ genre.name }}</td>
     <td>
-      <button (click)="updateGenres(genre.id)">Upraviť</button>
-      <button (click)="deleteGenre(genre.id)">Zmazať</button>
+      <button class="update" (click)="updateGenres(genre.id)">Upraviť</button>
+      <button class="delete" (click)="deleteGenre(genre.id)">Zmazať</button>
     </td>
   </tr>
 </table>
+</div>
+
