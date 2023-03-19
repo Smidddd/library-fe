@@ -13,10 +13,20 @@ input{
   margin-bottom: 1rem ;
 }
 .menu{
-  margin-bottom: 1rem;
+  overflow: hidden;
+  margin-left: 26%;
 }
 .menu button{
-  margin-right: 0.5rem;
+  float: left;
+  display: flex;
+  color: black;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+  font-size: 17px;
+  background-color: rosybrown;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 th, td{
   border: 1px solid;
@@ -24,7 +34,6 @@ th, td{
 table{
   width: 500px;
   border-collapse: collapse ;
-  margin-top: 1rem;
 }
 tr td:last-child {
   white-space:nowrap;

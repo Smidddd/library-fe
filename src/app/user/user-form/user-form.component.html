@@ -18,7 +18,9 @@
   </label>
   <p class="invalid-text" *ngIf="formGroup.controls.emailContact.invalid">Zadajte email</p>
 
-  <button type="submit" [disabled]="formGroup.invalid">Uložiť</button>
+  <button class="button" type="submit" [disabled]="formGroup.invalid">Uložiť</button>
 
-  <button type="reset">Zrušiť</button>
+  <button class="button" type="button" (click)="formCancel.emit()">
+    Zrušiť
+  </button>
 </form>

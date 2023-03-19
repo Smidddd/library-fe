@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Borrowing} from "../../common/model/borrowing.model";
+import {User} from "../../common/model/user.model";
+import {Book} from "../../common/model/book.model";
 
 @Component({
   selector: 'app-borrowings-form',
@@ -8,40 +10,50 @@ import {Borrowing} from "../../common/model/borrowing.model";
   styleUrls: ['./borrowings-form.component.css']
 })
 export class BorrowingsFormComponent {
-  @Output()
-  formCreate = new EventEmitter<Borrowing>();
-  formBorrows: FormGroup;
-  @Output()
-  formUpdate = new EventEmitter<Borrowing>();
+  @Input()
+  users?: User[];
+  @Input()
+  books?: Book[];
+
+  form: FormGroup;
+
   constructor() {
-    this.formBorrows = new FormGroup({
-      id: new FormControl(),
-      bookId: new FormControl(null, Validators.required),
-      customerId: new FormControl(null, [Validators.required])
+    this.form = new FormGroup({
+      id: new FormControl(null),
+      bookId: new FormControl(null),
+      customerId: new FormControl(null)
     })
   }
+  @Output()
+  formCreate = new EventEmitter<Borrowing>();
+
+  @Output()
+  formUpdate = new EventEmitter<Borrowing>();
+
   @Input()
   set borrowingData(borrowing: Borrowing | undefined) {
     if (borrowing) {
-      this.formBorrows.setValue(borrowing);
+      this.form.setValue(borrowing);
     }
   }
+  @Output()
+  formCancel = new EventEmitter<void>();
+
   saveBorrowing(): void {
-    if (this.formBorrows.valid) {
-      if (this.formBorrows.controls.id.value) {
+    if (this.form.valid) {
+      if (this.form.controls.id.value) {
         this.formUpdate.emit(
-          this.prepareBorrow(this.formBorrows.controls.id.value));
+          this.prepareBorrow(this.form.controls.id.value));
       } else {
         this.formCreate.emit(this.prepareBorrow());
       }
-      this.formBorrows.reset();
     }
   }
   private prepareBorrow(id?: number): Borrowing {
     return {
       id: id !== undefined ? id : Date.now(),
-      bookId: this.formBorrows.controls.bookId.value,
-      customerId: this.formBorrows.controls.customerId.value,
+      bookId: this.form.controls.bookId.value,
+      customerId: this.form.controls.customerId.value,
     };
   }
 }

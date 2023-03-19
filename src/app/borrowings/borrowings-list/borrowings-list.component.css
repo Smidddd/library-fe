@@ -1,0 +1,38 @@
+.table{
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
+  border-style: solid;
+  border-width: thin;
+  margin-left: 61vh;
+  margin-right: 81vh;
+  min-width: 81vh;
+}
+.delete {
+  background-color: firebrick;
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.update{
+  background-color: green;
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 1vh;
+}
+.text{
+  font-size: 2rem;
+  padding-right: 2vh;
+}

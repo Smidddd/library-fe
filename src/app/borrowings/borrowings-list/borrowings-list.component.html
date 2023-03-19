@@ -1,11 +1,11 @@
-<h1>Vypozicky</h1>
-<table *ngIf="borrowings.length">
-  <tr *ngFor="let borrowing of borrowings">
-    <td>{{ borrowing.bookId }}</td>
-    <td>{{ borrowing.customerId }}</td>
-    <td>
-      <button (click)="updateBorrowing(borrowing.id)">Upraviť</button>
-      <button (click)="deleteBorrowing(borrowing.id)">Zmazať</button>
-    </td>
-  </tr>
-</table>
+<div class="table">
+  <table *ngIf="borrowings.length">
+    <tr *ngFor="let borrowing of borrowings">
+      <td class="text">{{ borrowing.bookId }}</td> <!-- Nedoriesene zobrazovanie -->
+      <td class="text">{{ borrowing.customerId }}</td> <!-- Nedoriesene zobrazovanie -->
+      <td>
+        <button (click)="deleteBorrowing(borrowing.id)" class="delete">Zmazať</button>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -13,6 +13,8 @@ export class UserFormComponent {
   formGroup: FormGroup;
   @Output()
   formUpdate = new EventEmitter<User>();
+  @Output()
+  formCancel = new EventEmitter<void>();
   constructor() {
     this.formGroup = new FormGroup({
       id: new FormControl(),
@@ -35,7 +37,6 @@ export class UserFormComponent {
       } else {
         this.formCreate.emit(this.prepareUser());
       }
-      this.formGroup.reset();
     }
   }
   private prepareUser(id?: number): User {

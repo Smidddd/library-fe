@@ -1,11 +1,19 @@
+<div class="site">
 <h3>VYPOZICKY</h3>
-<app-borrowings-form
-  [borrowingData]="borrowing"
-  (formCreate)="createBorrowing($event)"
-  (formUpdate)="updateBorrowing($event)">
-</app-borrowings-form>
+<button (click)="addBookDialog.showModal()" class="button">Pridať Vypozicku</button>
 <app-borrowings-list
   [borrowings]="borrowings"
-  (borrowingToUpdate)="selectBorrowingToUpdate($event)"
-  (borrowingToDelete)="deleteBorrowing($event)">
+  (borrowingToDelete)="deleteBorrowing($event)">>
 </app-borrowings-list>
+
+<dialog #addBookDialog>
+  <div class="header">Pridanie Vypozicky</div>
+  <div class="content">
+    <app-borrowings-form (formCreate)="createBorrowing($event); addBookDialog.close()"
+                   (formCancel)="addBookDialog.close()"
+                   [users]="users"
+                   [books]="books">
+    </app-borrowings-form>
+  </div>
+</dialog>
+</div>

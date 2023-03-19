@@ -1,23 +1,45 @@
-import { Component } from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {User} from "../../common/model/user.model";
 import {HttpClient} from '@angular/common/http';
 import {UserService} from "../../common/service/user.service";
 import {Genre} from "../../common/model/genres.model";
+import {Subscription} from "rxjs";
+import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
+import {ToastService} from "angular-toastify";
+import {Router} from "@angular/router";
 
 
+@UntilDestroy()
 @Component({
   selector: 'app-user-page',
   templateUrl: './user-page.component.html',
   styleUrls: ['./user-page.component.css']
 })
-export class UserPageComponent {
+export class UserPageComponent{
+  private getListSubscription?: Subscription;
   persons: Array<User> = [];
   person?: User;
 
-  constructor(private service: UserService) {
+  constructor(private service: UserService,
+              private toastService: ToastService,
+              private router: Router) {
     this.getPersons();
   }
-
+  ngOnDestroy(): void {
+    this.getListUnsubscribe();
+  }
+  getListUnsubscribe(): void {
+    if (this.getListSubscription) {
+      this.getListSubscription.unsubscribe();
+      this.getListSubscription = undefined;
+    }
+  }
+  getPersons(): void {
+    this.service.getUsers().pipe(untilDestroyed(this)).subscribe((persons: User[]) => {
+      this.persons = persons;
+    });
+  }
+  /*
   getPersons(): void{
     this.service.getUsers().subscribe((persons: User[])=>{
       this.persons = persons;
@@ -39,14 +61,17 @@ export class UserPageComponent {
     })
   }
   selectPersonToUpdate(personId: number): void {
-    this.service.getUser(personId).subscribe((person: User) => {
-      this.person = person;
-    });
+    this.router.navigate(['user', personId]);
   }
   deletePerson(personId: number): void {
-    this.service.deleteUser(personId).subscribe(() => {
-      console.log('Osoba bola úspešne zmazaná.');
-      this.getPersons();
-    })
+    if (window.confirm('Naozaj chcete vymazať osobu?')) {
+      this.service.deleteUser(personId).pipe(untilDestroyed(this)).subscribe(() => {
+        this.toastService.success('Osoba bola úspešne zmazaná.');
+        this.getPersons();
+      }, () => {
+        this.toastService.error('Chyba. Osoba nebola zmazaná.');
+      })
+    }
   }
+
 }

@@ -1,11 +1,13 @@
-<table *ngIf="persons.length">
-  <tr *ngFor="let person of persons">
-    <td>{{ person.firstName }}</td>
-    <td>{{ person.lastName }}</td>
-    <td>{{ person.emailContact }}</td>
-    <td>
-      <button (click)="updatePerson(person.id)">Upraviť</button>
-      <button (click)="deletePerson(person.id)">Zmazať</button>
-    </td>
-  </tr>
-</table>
+<div class="table">
+  <table *ngIf="persons.length">
+    <tr class="output" *ngFor="let person of persons">
+      <td  class="text" >{{ person.firstName }}</td>
+      <td  class="text" >{{ person.lastName }}</td>
+      <td  class="text" >{{ person.emailContact }}</td>
+      <td>
+        <button class="update" (click)="updatePerson(person.id)">Upraviť</button>
+        <button  class="delete" (click)="deletePerson(person.id)">Zmazať</button>
+      </td>
+    </tr>
+  </table>
+</div>

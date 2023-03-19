@@ -1,0 +1,70 @@
+.header{
+  padding: 60px;
+  text-align: center;
+  color: black;
+  font-size: 30px;
+  margin-bottom: 50px;
+}
+input, label{
+  display: block;
+}
+input{
+  margin-bottom: 1rem ;
+}
+.menu{
+  margin-bottom: 1rem;
+}
+.menu button{
+  margin-right: 0.5rem;
+}
+th, td{
+  border: 1px solid;
+}
+table{
+  width: 500px;
+  border-collapse: collapse ;
+  margin-top: 1rem;
+}
+tr td:last-child {
+  white-space:nowrap;
+}
+td button:first-child {
+  margin-right: 0.5rem;
+}
+button[type="reset"] {
+  margin-left: 0.5rem;
+}
+dialog {
+  height: 600px;
+  width: 600px;
+  border: none;
+  background-color: #fcde69;
+  border: 2px solid;
+  float: left;
+  overflow-y: hidden;
+}
+
+dialog > .header {
+  padding: 18px;
+  font-size: 25px;
+}
+
+dialog > .content {
+  padding-bottom: 100px;
+  text-align: center;
+}
+.site{
+  text-align: center;
+}
+.button{
+  color: black;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  margin-top: 20px;
+  background-color: yellowgreen;
+
+}
+h3{
+  font-size: 2rem;
+}

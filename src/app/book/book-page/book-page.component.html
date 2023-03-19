@@ -1,13 +1,21 @@
-<h3>KNIHY</h3>
-<app-book-form
-  [bookData]="book"
-  (formCreate)="createBook($event)"
-  (formUpdate)="updateBook($event)">
-</app-book-form>
-<app-book-list
-  [books]="books"
-  (bookToUpdate)="
-  selectBookToUpdate($event)"
-  (bookToDelete)="deleteBook($event)">
-</app-book-list>
+<div class="site">
+  <h3>KNIHY</h3>
 
+  <button class="button" (click)="addBookDialog.showModal()">Pridať Knihu</button>
+  <app-book-list
+    [books]="books"
+    (bookToUpdate)="
+    selectBookToUpdate($event)"
+    (bookToDelete)="deleteBook($event)">
+  </app-book-list>
+
+  <dialog #addBookDialog>
+    <div class="header">Pridanie Knihy</div>
+    <div class="content">
+      <app-book-form (formCreate)="createBook($event); addBookDialog.close()"
+                     (formCancel)="addBookDialog.close()"
+                     [genres]="genres">
+      </app-book-form>
+    </div>
+  </dialog>
+</div>
