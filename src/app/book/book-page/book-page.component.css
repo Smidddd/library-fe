@@ -1,0 +1,14 @@
+dialog {
+  height: 500px;
+  width: 505px;
+  border: none;
+}
+
+dialog > .header {
+  padding: 18px;
+  font-size: 25px;
+}
+
+dialog > .content {
+  padding: 18px;
+}

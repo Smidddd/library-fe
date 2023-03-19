@@ -22,6 +22,8 @@ import {BooksService} from "./common/service/books.service";
 import {BorrowingsService} from "./common/service/borrowings.service";
 import {AngularToastifyModule, ToastService} from 'angular-toastify';
 import { UserDetailPageComponent } from './user/user-detail-page/user-detail-page.component';
+import { BookDetailPageComponent } from './book/book-detail-page/book-detail-page.component';
+import {GenreDetailPageComponent} from "./genre/genre-detail-page/genre-detail-page.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,9 @@ import { UserDetailPageComponent } from './user/user-detail-page/user-detail-pag
     BookListComponent,
     BorrowingsFormComponent,
     BorrowingsListComponent,
-    UserDetailPageComponent
+    UserDetailPageComponent,
+    BookDetailPageComponent,
+    GenreDetailPageComponent
   ],
     imports: [
         BrowserModule,

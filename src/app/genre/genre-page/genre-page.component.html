@@ -3,6 +3,7 @@
   [genreData]="genre"
   (formCreate)="createGenre($event)"
   (formUpdate)="updateGenre($event)">
+
 </app-genre-form>
 <app-genre-list
   [genres]="genres"
@@ -10,4 +11,12 @@
 selectGenreToUpdate($event)"
   (genreToDelete)="deleteGenre($event)">
 </app-genre-list>
-
+<button (click)="addGenreDialog.showModal()">Pridať Zaner</button>
+<dialog #addGenreDialog>
+  <div class="header">Pridanie zanru</div>
+  <div class="content">
+    <app-genre-form (formCreate)="createGenre($event); addGenreDialog.close()"
+                   (formCancel)="addGenreDialog.close()">
+    </app-genre-form>
+  </div>
+</dialog>

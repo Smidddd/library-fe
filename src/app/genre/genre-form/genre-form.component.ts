@@ -18,6 +18,8 @@ export class GenreFormComponent {
       this.formGenres.setValue(genre);
     }
   }
+  @Output()
+  formCancel = new EventEmitter<void>();
 
   @Output()
   formUpdate = new EventEmitter<Genre>();
@@ -37,7 +39,6 @@ export class GenreFormComponent {
       } else {
         this.formCreate.emit(this.prepareGenre());
       }
-      this.formGenres.reset();
     }
   }
 
