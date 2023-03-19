@@ -4,6 +4,7 @@ import {Borrowing} from "../../common/model/borrowing.model";
 import {User} from "../../common/model/user.model";
 import {Book} from "../../common/model/book.model";
 
+
 @Component({
   selector: 'app-borrowings-form',
   templateUrl: './borrowings-form.component.html',
@@ -12,8 +13,10 @@ import {Book} from "../../common/model/book.model";
 export class BorrowingsFormComponent {
   @Input()
   users?: User[];
+
   @Input()
   books?: Book[];
+
 
   form: FormGroup;
 
@@ -22,6 +25,7 @@ export class BorrowingsFormComponent {
       id: new FormControl(null),
       bookId: new FormControl(null),
       customerId: new FormControl(null)
+
     })
   }
   @Output()
@@ -29,6 +33,7 @@ export class BorrowingsFormComponent {
 
   @Output()
   formUpdate = new EventEmitter<Borrowing>();
+
 
   @Input()
   set borrowingData(borrowing: Borrowing | undefined) {

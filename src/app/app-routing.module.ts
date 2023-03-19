@@ -10,6 +10,7 @@ import {GenreDetailPageComponent} from "./genre/genre-detail-page/genre-detail-p
 import {BorrowingsDetailPageComponent} from "./borrowings/borrowings-detail-page/borrowings-detail-page.component";
 
 
+
 const routes: Routes = [
   {
     path: 'user',

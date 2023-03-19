@@ -52,6 +52,7 @@ export class BorrowingsPageComponent implements OnDestroy {
     })
   }
   deleteBorrowing(borrowingId: number): void {
+
     if (window.confirm('Naozaj chcete vymazať Vypozicka?')) {
       this.service.deleteBorrowing(borrowingId).pipe(untilDestroyed(this)).subscribe(() => {
         this.toastService.success('Vypozicka bola úspešne zmazaná.');
@@ -70,4 +71,5 @@ export class BorrowingsPageComponent implements OnDestroy {
       this.getListSubscription = undefined;
     }
   }
+
 }

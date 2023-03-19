@@ -18,6 +18,7 @@ export class BookFormComponent {
 
   @Output()
   formCancel = new EventEmitter<void>();
+
   @Output()
   formCreate = new EventEmitter<Book>();
   @Output()

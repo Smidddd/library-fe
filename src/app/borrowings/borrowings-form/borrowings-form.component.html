@@ -1,12 +1,15 @@
 
 <form [formGroup]="form" (submit)="saveBorrowing()">
   <label>Používateľ:
+
     <select type="text" formControlName="customerId">
+
       <option *ngFor="let user of users" [value]="user.id">
         {{ user.firstName + ' ' + user.lastName }}
       </option>
     </select>
   </label>
+
   <label>Kniha:
     <select type="text" formControlName="bookId">
       <option *ngFor="let book of books" [value]="book.bookId">
@@ -18,4 +21,5 @@
   <button type="button" class="button" (click)="formCancel.emit()">
     Zrušiť
   </button>
+
 </form>

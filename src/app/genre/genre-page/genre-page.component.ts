@@ -60,7 +60,6 @@ export class GenrePageComponent{
       this.getGenres();
     })
   }
-
   deleteGenre(genreId: number): void {
     if (window.confirm('Naozaj chcete vymazať osobu?')) {
       this.service.deleteGenre(genreId).pipe(untilDestroyed(this)).subscribe(() => {
