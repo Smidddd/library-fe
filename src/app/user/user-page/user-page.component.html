@@ -1,20 +1,19 @@
-<h3>POUŽÍVATELIA</h3>
-<app-user-form
-  [personData]="person"
-  (formCreate)="createPerson($event)"
-  (formUpdate)="updatePerson($event)">
-</app-user-form>
-<app-user-list
-  [persons]="persons"
-  (personToUpdate)="selectPersonToUpdate($event)"
-  (personToDelete)="deletePerson($event)">z
-</app-user-list>
-<button (click)="addUserDialog.showModal()">Pridať používateľa</button>
-<dialog #addUserDialog>
-  <div class="header">Pridanie používateľa</div>
-  <div class="content">
-    <app-user-form (formCreate)="createPerson($event); addUserDialog.close()"
-                   (formCancel)="addUserDialog.close()">
-    </app-user-form>
-  </div>
-</dialog>
+<div class="site">
+  <h3>POUŽÍVATELIA</h3>
+  <button class="button" (click)="addUserDialog.showModal()">Pridať používateľa</button>
+  <app-user-list
+    [persons]="persons"
+    (personToUpdate)="selectPersonToUpdate($event)"
+    (personToDelete)="deletePerson($event)">
+  </app-user-list>
+
+  <dialog #addUserDialog>
+    <div class="header">Pridanie používateľa</div>
+    <div class="content">
+      <app-user-form (formCreate)="createPerson($event); addUserDialog.close()"
+                     (formCancel)="addUserDialog.close()">
+      </app-user-form>
+    </div>
+  </dialog>
+
+</div>

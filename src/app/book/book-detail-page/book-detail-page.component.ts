@@ -3,10 +3,10 @@ import {Book} from "../../common/model/book.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BooksService} from "../../common/service/books.service";
 import {ToastService} from "angular-toastify";
-import {untilDestroyed} from "@ngneat/until-destroy";
+import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {GenreService} from "../../common/service/genre.service";
 import {Genre} from "../../common/model/genres.model";
-
+@UntilDestroy()
 @Component({
   selector: 'app-book-detail-page',
   templateUrl: './book-detail-page.component.html',
@@ -44,6 +44,7 @@ export class BookDetailPageComponent {
       this.toastService.success('Kniha bola úspešne zmenená.');
     }, () => { this.toastService.error('Chyba. Kniha nebola zmenená.'); })
   }
+
   cancel(): void {
     this.router.navigate(['book']);
   }

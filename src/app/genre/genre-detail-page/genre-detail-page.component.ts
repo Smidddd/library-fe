@@ -3,8 +3,8 @@ import {Genre} from "../../common/model/genres.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ToastService} from "angular-toastify";
 import {GenreService} from "../../common/service/genre.service";
-import {untilDestroyed} from "@ngneat/until-destroy";
-
+import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
+@UntilDestroy()
 @Component({
   selector: 'app-genre-detail-page',
   templateUrl: './genre-detail-page.component.html',
@@ -22,7 +22,7 @@ export class GenreDetailPageComponent {
     this.genreId = Number(route.snapshot.paramMap.get('genreId'));
     this.getGenre();
   }
-  getGenre(): void { // PREMIESTNENE Z user-page.component.ts
+  getGenre(): void {
     if (this.genreId) {
       this.service.getGenre(this.genreId).pipe(untilDestroyed(this)).subscribe((genre: Genre) => {
         this.genre = genre;
@@ -34,7 +34,7 @@ export class GenreDetailPageComponent {
   }
   updateGenre(genre: Genre): void { // PREMIESTNENE Z user-page.component.ts
     this.service.updateGenre(genre).pipe(untilDestroyed(this)).subscribe(() => {
-      this.toastService.success('Osoba bola úspešne zmenená.');
-    }, () => { this.toastService.error('Chyba. Osoba nebola zmenená.'); })
+      this.toastService.success('Zaner bol uspesne zmeneny.');
+    }, () => { this.toastService.error('Chyba. Zaner nebol zmeneny.'); })
   }
 }

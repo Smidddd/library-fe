@@ -1,30 +1,30 @@
-<form [formGroup]="formBooks" (submit)="saveBook()">
+<form [formGroup]="formBooks" (submit)="saveBook()" class="form">
   <label>Krstne meno autora:
     <input type="text" formControlName="authorFirstName" />
   </label>
   <p class="invalid-text" *ngIf="formBooks.controls.authorFirstName.invalid">Zadajte krstne meno autora</p>
-  <br>
+  <br><br>
   <label>Priezvisko autora:
     <input type="text" formControlName="authorLastName"/>
   </label>
   <p *ngIf="formBooks.controls.authorLastName.errors?.required" class="invalid-text">Zadajte priezvisko autora</p>
-  <br>
+  <br><br>
   <label>Nazov:
     <input type="text" formControlName="title"/>
   </label>
   <p *ngIf="formBooks.controls.title.errors?.required" class="invalid-text">Zadajte nazov knihy</p>
-  <br>
+  <br><br>
   <label>Isbn:
     <input type="text" formControlName="isbn"/>
   </label>
   <p *ngIf="formBooks.controls.isbn.errors?.required" class="invalid-text">Zadajte Isbn</p>
-  <br>
+  <br><br>
   <label>Pocet knih:
     <input type="text" formControlName="count"/>
   </label>
   <p *ngIf="formBooks.controls.count.errors?.required" class="invalid-text">Zadajte pocet knih</p>
 
-  <br>
+  <br><br>
   <label>Zanre:
     <select type="text" formControlName="categoryIds">
       <option *ngFor="let genre of genres" [value]="genre.id">
@@ -33,15 +33,15 @@
     </select>
   </label>
   <br><br>
-  <button type="button" (click)="saveGenres()">
+  <button class="button"  type="button" (click)="saveGenres()">
     Uložiť Zaner
   </button>
   <br>
-  <button type="submit" [disabled]="formBooks.invalid">
+  <button class="button" type="submit" [disabled]="formBooks.invalid">
     Uložiť
   </button>
   <br>
-  <button type="button" (click)="formCancel.emit()">
+  <button class="button"   type="button" (click)="formCancel.emit()">
     Zrušiť
   </button>
 </form>

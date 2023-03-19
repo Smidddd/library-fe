@@ -17,7 +17,7 @@ import {Route, Router} from "@angular/router";
   styleUrls: ['./book-page.component.css']
 })
 
-export class BookPageComponent{
+export class BookPageComponent {
   private getListSubscription?: Subscription;
   books: Array<Book> = []
   genres: Array<Genre> = []

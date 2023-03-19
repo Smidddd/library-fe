@@ -1,6 +1,7 @@
 
 import {Book} from "../../common/model/book.model";
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Genre} from "../../common/model/genres.model";
 
 @Component({
   selector: 'app-book-list',
@@ -10,7 +11,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 export class BookListComponent {
   @Input()
   books: Array<Book> = []; // NOVE
-
+  genres: Array<Genre> = []
 
   @Output()
   bookToUpdate = new EventEmitter<number>();

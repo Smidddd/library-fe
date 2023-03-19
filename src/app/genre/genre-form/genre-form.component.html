@@ -1,13 +1,16 @@
-<form [formGroup]="formGenres" (submit)="saveGenre()">
-  <label>Zaner:
-    <input type="text" formControlName="name" />
-  </label>
-  <p class="invalid-text" *ngIf="formGenres.controls.name.invalid"></p>
-  <button type="submit" [disabled]="formGenres.invalid">
-    Uložiť
-  </button>
-  <button type="reset">Zrušiť</button>
-  <button type="button" (click)="formCancel.emit()">
-    Zrušiť
-  </button>
-</form>
+<div class="form">
+  <form [formGroup]="formGenres" (submit)="saveGenre()">
+    <label>Zaner:
+      <input type="text" formControlName="name" />
+    </label>
+    <p class="invalid-text" *ngIf="formGenres.controls.name.invalid"></p>
+    <div >
+      <button class="button" type="submit" [disabled]="formGenres.invalid">
+        Uložiť
+      </button>
+      <button class="button" type="button" (click)="formCancel.emit()">
+        Zrušiť
+      </button>
+    </div>
+  </form>
+</div>

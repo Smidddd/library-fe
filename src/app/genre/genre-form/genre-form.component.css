@@ -1,0 +1,48 @@
+.button{
+  color: black;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  margin-top: 20px;
+  width: auto;
+  height: auto;
+  display: inline-block;
+}
+dialog {
+  height: 600px;
+  width: 600px;
+  border: none;
+  background-color: #fcde69;
+  border: 2px solid;
+  float: left;
+  overflow-y: hidden;
+}
+
+dialog > .header {
+  padding: 18px;
+  font-size: 25px;
+}
+
+dialog > .content {
+  padding-bottom: 100px;
+  text-align: center;
+}
+.site{
+  text-align: center;
+}
+.button{
+  color: black;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  margin-top: 20px;
+  background-color: yellowgreen;
+
+}
+h3{
+  font-size: 2rem;
+}
+.form{
+  text-align: center;
+  padding-top: 20px;
+}

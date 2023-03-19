@@ -56,26 +56,18 @@ export class GenrePageComponent{
   }
 
   createGenre(genre: Genre): void {
-    this.service.createGenre(genre).subscribe(() => { console.log('Osoba bola úspešne uložená.');
+    this.service.createGenre(genre).subscribe(() => { console.log('Zaner bol uspesne ulozeny.');
       this.getGenres();
     })
   }
 
-  selectGenreToUpdate(genreId: number): void {
-    this.service.getGenre(genreId).subscribe((genre: Genre) => { this.genre = genre; });
-  }
-  updateGenre(genre: Genre): void {
-    this.service.updateGenre(genre).subscribe(() => { console.log('Osoba bola úspešne zmenená.');
-      this.getGenres();
-    })
-  }
   deleteGenre(genreId: number): void {
     if (window.confirm('Naozaj chcete vymazať osobu?')) {
       this.service.deleteGenre(genreId).pipe(untilDestroyed(this)).subscribe(() => {
-        this.toastService.success('Osoba bola úspešne zmazaná.');
+        this.toastService.success('Zaner bol uspesne zmazany.');
         this.getGenres();
       }, () => {
-        this.toastService.error('Chyba. Osoba nebola zmazaná.');
+        this.toastService.error('Chyba. Zaner nebol zmazany.');
       })
     }
   }
