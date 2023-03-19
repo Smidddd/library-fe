@@ -5,6 +5,7 @@ import {GenrePageComponent} from "./genre/genre-page/genre-page.component";
 import {BorrowingsPageComponent} from "./borrowings/borrowings-page/borrowings-page.component";
 import {BookPageComponent} from "./book/book-page/book-page.component";
 import {UserDetailPageComponent} from "./user/user-detail-page/user-detail-page.component";
+import {GenreDetailPageComponent} from "./genre/genre-detail-page/genre-detail-page.component";
 
 
 const routes: Routes = [
@@ -23,6 +24,14 @@ const routes: Routes = [
   {
     path: 'book',
     component: BookPageComponent
+  },
+  {
+    path: 'genre',
+    component: GenrePageComponent
+  },
+  {
+    path: 'genre/:genreId',
+    component: GenreDetailPageComponent
   },
   {
   path: '**',
