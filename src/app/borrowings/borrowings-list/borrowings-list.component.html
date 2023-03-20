@@ -1,8 +1,8 @@
 <div class="table">
   <table *ngIf="borrowings.length">
     <tr *ngFor="let borrowing of borrowings">
-      <td class="text">{{ borrowing.bookId }}</td> <!-- Nedoriesene zobrazovanie -->
-      <td class="text">{{ borrowing.customerId }}</td> <!-- Nedoriesene zobrazovanie -->
+      <td class="text">{{ borrowing.bookDetailDTO.title }}</td> <!-- Nedoriesene zobrazovanie -->
+      <td class="text">{{ borrowing.customerDetailDTO.firstName + " " + borrowing.customerDetailDTO.lastName }}</td> <!-- Nedoriesene zobrazovanie -->
       <td>
         <button (click)="deleteBorrowing(borrowing.id)" class="delete">Zmazať</button>
       </td>

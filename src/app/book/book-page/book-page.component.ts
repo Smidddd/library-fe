@@ -1,7 +1,7 @@
 import {Component, OnDestroy} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
-import {Book} from "../../common/model/book.model";
+import {Book, BookResponse} from "../../common/model/book.model";
 import {BooksService} from "../../common/service/books.service";
 import {Genre} from "../../common/model/genres.model";
 import {GenreService} from "../../common/service/genre.service";
@@ -19,7 +19,7 @@ import {Route, Router} from "@angular/router";
 
 export class BookPageComponent {
   private getListSubscription?: Subscription;
-  books: Array<Book> = []
+  books: Array<BookResponse> = []
   genres: Array<Genre> = []
   genre?: Genre[];
   book?: Book;
@@ -34,7 +34,7 @@ export class BookPageComponent {
   }
 
   getBooks(): void {
-    this.service.getBooks().pipe(untilDestroyed(this)).subscribe((books: Book[]) => {
+    this.service.getBooks().pipe(untilDestroyed(this)).subscribe((books: BookResponse[]) => {
       this.books = books;
     });
   }

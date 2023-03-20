@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Borrowing} from "../../common/model/borrowing.model";
+import {Borrowing, BorrowingResponse} from "../../common/model/borrowing.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ToastService} from "angular-toastify";
 import {UserService} from "../../common/service/user.service";
@@ -12,7 +12,7 @@ import {BorrowingsService} from "../../common/service/borrowings.service";
   styleUrls: ['./borrowings-detail-page.component.css']
 })
 export class BorrowingsDetailPageComponent {
-  borrowing?: Borrowing;
+  borrowing?: BorrowingResponse;
 
   private borrowingId: number | null;
 
@@ -25,7 +25,7 @@ export class BorrowingsDetailPageComponent {
   }
   getBorrowing(): void { // PREMIESTNENE Z user-page.component.ts
     if (this.borrowingId) {
-      this.service.getBorrowing(this.borrowingId).pipe(untilDestroyed(this)).subscribe((borrowing: Borrowing) => {
+      this.service.getBorrowing(this.borrowingId).pipe(untilDestroyed(this)).subscribe((borrowing: BorrowingResponse) => {
         this.borrowing = borrowing;
       });
     }

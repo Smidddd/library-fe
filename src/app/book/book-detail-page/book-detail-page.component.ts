@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Book} from "../../common/model/book.model";
+import {Book, BookResponse} from "../../common/model/book.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BooksService} from "../../common/service/books.service";
 import {ToastService} from "angular-toastify";
@@ -14,6 +14,8 @@ import {Genre} from "../../common/model/genres.model";
 })
 export class BookDetailPageComponent {
   books?: Book;
+
+  bookResponses?: BookResponse;
   genres: Array<Genre> = []
   genre?: Genre[];
   private bookId: number | null;
@@ -24,13 +26,21 @@ export class BookDetailPageComponent {
               private toastService: ToastService,
               private genreService: GenreService) {
     this.bookId = Number(route.snapshot.paramMap.get('bookId'));
-    this.getBook();
+    //this.getBook();
     this.getGenres();
+    this.getBookResponse();
   }
-  getBook(): void {
+  /*getBook(): void {
     if (this.bookId) {
       this.service.getBook(this.bookId).pipe(untilDestroyed(this)).subscribe((books: Book) => {
         this.books = books;
+      });
+    }
+  }*/
+  getBookResponse(): void {
+    if (this.bookId) {
+      this.service.getBook(this.bookId).pipe(untilDestroyed(this)).subscribe((bookResponse: BookResponse) => {
+        this.bookResponses = bookResponse;
       });
     }
   }

@@ -6,3 +6,8 @@ export interface Borrowing {
   bookId: number;
   customerId: number;
 }
+export interface BorrowingResponse {
+  id: number;
+  bookDetailDTO: Book;
+  customerDetailDTO: User;
+}

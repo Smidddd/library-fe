@@ -1,9 +1,9 @@
 import {Component, OnDestroy} from '@angular/core';
-import {Borrowing} from "../../common/model/borrowing.model";
+import {Borrowing, BorrowingResponse} from "../../common/model/borrowing.model";
 import {BorrowingsService} from "../../common/service/borrowings.service";
 import {User} from "../../common/model/user.model";
 import {UserService} from "../../common/service/user.service";
-import {Book} from "../../common/model/book.model";
+import {Book, BookResponse} from "../../common/model/book.model";
 import {BooksService} from "../../common/service/books.service";
 import {Subscription} from 'rxjs';
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
@@ -16,10 +16,10 @@ import {Router} from "@angular/router";
   styleUrls: ['./borrowings-page.component.css']
 })
 export class BorrowingsPageComponent implements OnDestroy {
-  borrowings: Array<Borrowing> = [];
-  borrowing?: Borrowing;
+  borrowings: Array<BorrowingResponse> = [];
+  borrowing?: BorrowingResponse;
   users?: User[];
-  books?: Book[];
+  books?: BookResponse[];
   private getListSubscription?: Subscription;
   constructor(private userService: UserService,
               private bookService: BooksService,
@@ -42,7 +42,7 @@ export class BorrowingsPageComponent implements OnDestroy {
   }
 
   getBorrowings(): void {
-    this.service.getBorrowings().pipe(untilDestroyed(this)).subscribe((borrowings: Borrowing[]) => {
+    this.service.getBorrowings().pipe(untilDestroyed(this)).subscribe((borrowings: BorrowingResponse[]) => {
       this.borrowings = borrowings;
     });
   }

@@ -6,7 +6,11 @@
       <td class="text" >{{ book.title }}</td>
       <td class="text" >{{ book.isbn }}</td>
       <td class="text" >{{ book.count }}</td>
-      <td class="text" >{{ book.categoryIds}}</td>
+      <table>
+        <tr *ngFor="let genre of book.categoryIds">
+          <td class="text">{{ genre.name}}</td>
+        </tr>
+      </table>
       <td>
         <button class="update"  (click)="editBook(book.bookId)">Upraviť</button>
         <button class="delete" (click)="deleteBook(book.bookId)">Zmazať</button>

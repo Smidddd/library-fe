@@ -1,5 +1,5 @@
 
-import {Book} from "../../common/model/book.model";
+import {Book, BookResponse} from "../../common/model/book.model";
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Genre} from "../../common/model/genres.model";
 
@@ -10,7 +10,7 @@ import {Genre} from "../../common/model/genres.model";
 })
 export class BookListComponent {
   @Input()
-  books: Array<Book> = []; // NOVE
+  books: Array<BookResponse> = []; // NOVE
   genres: Array<Genre> = []
 
   @Output()

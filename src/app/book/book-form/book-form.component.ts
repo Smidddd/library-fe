@@ -1,8 +1,9 @@
 
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Book} from "../../common/model/book.model";
+import {Book, BookResponse} from "../../common/model/book.model";
 import {Genre} from "../../common/model/genres.model";
+import {BorrowingResponse} from "../../common/model/borrowing.model";
 
 @Component({
   selector: 'app-book-form',

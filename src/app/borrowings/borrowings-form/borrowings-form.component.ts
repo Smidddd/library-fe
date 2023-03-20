@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Borrowing} from "../../common/model/borrowing.model";
+import {Borrowing, BorrowingResponse} from "../../common/model/borrowing.model";
 import {User} from "../../common/model/user.model";
-import {Book} from "../../common/model/book.model";
+import {Book, BookResponse} from "../../common/model/book.model";
 
 
 @Component({
@@ -15,7 +15,7 @@ export class BorrowingsFormComponent {
   users?: User[];
 
   @Input()
-  books?: Book[];
+  books?: BookResponse[];
 
 
   form: FormGroup;
@@ -36,7 +36,7 @@ export class BorrowingsFormComponent {
 
 
   @Input()
-  set borrowingData(borrowing: Borrowing | undefined) {
+  set borrowingData(borrowing: BorrowingResponse | undefined) {
     if (borrowing) {
       this.form.setValue(borrowing);
     }

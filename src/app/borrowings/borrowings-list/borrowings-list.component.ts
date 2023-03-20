@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Borrowing} from "../../common/model/borrowing.model";
+import {Borrowing, BorrowingResponse} from "../../common/model/borrowing.model";
 
 @Component({
   selector: 'app-borrowings-list',
@@ -8,13 +8,8 @@ import {Borrowing} from "../../common/model/borrowing.model";
 })
 export class BorrowingsListComponent {
   @Input()
-  borrowings: Array<Borrowing> = []; // NOVE
+  borrowings: Array<BorrowingResponse> = []; // NOVE
 
-  @Output()
-  borrowingToUpdate = new EventEmitter<number>();
-  updateBorrowing(borrowId: number): void { // NOVE
-    this.borrowingToUpdate.emit(borrowId);
-  }
   @Output()
   borrowingToDelete = new EventEmitter<number>();
   deleteBorrowing(borrowId: number): void {
